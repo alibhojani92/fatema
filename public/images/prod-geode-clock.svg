@@ -1,0 +1,64 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 900">
+  
+  <defs>
+    <linearGradient id="bg-p13" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FDF8F6" />
+      <stop offset="55%" stop-color="#F4E5E9" />
+      <stop offset="100%" stop-color="#FDF8F6" />
+    </linearGradient>
+    <linearGradient id="gold-p13" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#F5E4B3" />
+      <stop offset="45%" stop-color="#C59B27" />
+      <stop offset="100%" stop-color="#8C6A14" />
+    </linearGradient>
+    <linearGradient id="rose-p13" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#E7BCC3" />
+      <stop offset="50%" stop-color="#B76E79" />
+      <stop offset="100%" stop-color="#7B3E48" />
+    </linearGradient>
+    <linearGradient id="glass-p13" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FFFFFF" stop-opacity="0.72" />
+      <stop offset="40%" stop-color="#FFFFFF" stop-opacity="0.16" />
+      <stop offset="100%" stop-color="#FDF8F6" stop-opacity="0.45" />
+    </linearGradient>
+    <radialGradient id="glow-p13" cx="35%" cy="28%" r="65%">
+      <stop offset="0%" stop-color="#FFFFFF" stop-opacity="0.75" />
+      <stop offset="60%" stop-color="#FFFFFF" stop-opacity="0.08" />
+      <stop offset="100%" stop-color="#23191E" stop-opacity="0.12" />
+    </radialGradient>
+    <filter id="soft-shadow-p13" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="18" stdDeviation="20" flood-color="#23191E" flood-opacity="0.16" />
+    </filter>
+    <filter id="marble-tex-p13">
+      <feTurbulence type="fractalNoise" baseFrequency="0.012" numOctaves="4" seed="24" result="noise" />
+      <feColorMatrix type="matrix" values="1 0 0 0 0  0 0.94 0 0 0  0 0 0.92 0 0  0 0 0 0.08 0" />
+    </filter>
+  </defs>
+
+  <rect width="900" height="900" fill="url(#bg-p13)" />
+  <rect width="900" height="900" filter="url(#marble-tex-p13)" />
+  <!-- Soft studio window light arch -->
+  <path d="M120,900 L120,250 A330,330 0 0,1 780,250 L780,900 Z" fill="#FFFFFF" opacity="0.34" />
+  <!-- Travertine pedestal base -->
+  <ellipse cx="450" cy="742" rx="285" ry="44" fill="#23191E" opacity="0.08" />
+  <rect x="145" y="705" width="610" height="58" rx="14" fill="#EBDDD9" stroke="#E6D7D0" stroke-width="2" />
+  
+  <g filter="url(#soft-shadow-p13)">
+    <circle cx="450" cy="445" r="258" fill="#FFFFFF" stroke="url(#gold-p13)" stroke-width="9" />
+    <circle cx="450" cy="445" r="230" fill="#F3DCE1" />
+    <path d="M235,380 C340,295 470,310 615,405 C565,525 450,590 310,565 C245,552 215,460 235,380 Z" fill="url(#rose-p13)" opacity="0.82" />
+    <path d="M265,515 C375,455 510,555 645,455" fill="none" stroke="url(#gold-p13)" stroke-width="6" />
+    <path d="M260,340 C390,415 520,345 640,425" fill="none" stroke="url(#gold-p13)" stroke-width="4" />
+    <!-- Crushed crystal druzy sparkle -->
+    <g fill="#FFFFFF" opacity="0.88">
+      <polygon points="365,420 382,408 390,428 372,436" />
+      <polygon points="392,438 408,426 416,446 398,454" />
+      <polygon points="495,465 512,452 520,472 502,480" />
+    </g>
+    <!-- Golden Clock Hands -->
+    <line x1="450" y1="462" x2="450" y2="310" stroke="#23191E" stroke-width="7" stroke-linecap="round" />
+    <line x1="438" y1="454" x2="555" y2="390" stroke="url(#gold-p13)" stroke-width="6" stroke-linecap="round" />
+    <circle cx="450" cy="445" r="13" fill="url(#gold-p13)" />
+  </g>
+
+</svg>

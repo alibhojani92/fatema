@@ -1,0 +1,81 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 900">
+  
+  <defs>
+    <linearGradient id="bg-p8" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FDF8F6" />
+      <stop offset="55%" stop-color="#F4E4EB" />
+      <stop offset="100%" stop-color="#FDF8F6" />
+    </linearGradient>
+    <linearGradient id="gold-p8" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#F5E4B3" />
+      <stop offset="45%" stop-color="#C59B27" />
+      <stop offset="100%" stop-color="#8C6A14" />
+    </linearGradient>
+    <linearGradient id="rose-p8" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#E7BCC3" />
+      <stop offset="50%" stop-color="#B76E79" />
+      <stop offset="100%" stop-color="#7B3E48" />
+    </linearGradient>
+    <linearGradient id="glass-p8" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FFFFFF" stop-opacity="0.72" />
+      <stop offset="40%" stop-color="#FFFFFF" stop-opacity="0.16" />
+      <stop offset="100%" stop-color="#FDF8F6" stop-opacity="0.45" />
+    </linearGradient>
+    <radialGradient id="glow-p8" cx="35%" cy="28%" r="65%">
+      <stop offset="0%" stop-color="#FFFFFF" stop-opacity="0.75" />
+      <stop offset="60%" stop-color="#FFFFFF" stop-opacity="0.08" />
+      <stop offset="100%" stop-color="#23191E" stop-opacity="0.12" />
+    </radialGradient>
+    <filter id="soft-shadow-p8" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="18" stdDeviation="20" flood-color="#23191E" flood-opacity="0.16" />
+    </filter>
+    <filter id="marble-tex-p8">
+      <feTurbulence type="fractalNoise" baseFrequency="0.012" numOctaves="4" seed="17" result="noise" />
+      <feColorMatrix type="matrix" values="1 0 0 0 0  0 0.94 0 0 0  0 0 0.92 0 0  0 0 0 0.08 0" />
+    </filter>
+  </defs>
+
+  <rect width="900" height="900" fill="url(#bg-p8)" />
+  <rect width="900" height="900" filter="url(#marble-tex-p8)" />
+  <!-- Soft studio window light arch -->
+  <path d="M120,900 L120,250 A330,330 0 0,1 780,250 L780,900 Z" fill="#FFFFFF" opacity="0.34" />
+  <!-- Travertine pedestal base -->
+  <ellipse cx="450" cy="742" rx="285" ry="44" fill="#23191E" opacity="0.08" />
+  <rect x="145" y="705" width="610" height="58" rx="14" fill="#EEDEE3" stroke="#E6D7D0" stroke-width="2" />
+  
+  <g filter="url(#soft-shadow-p8)">
+    <!-- Sleek Dropper Bottles Row -->
+    
+      <rect x="210" y="310" width="76" height="285" rx="16" fill="#FFFFFF" stroke="#E5D5CE" stroke-width="2.5" />
+      <rect x="220" y="375" width="56" height="175" rx="8" fill="#9B2C4A" />
+      <polygon points="236,310 260,310 252,246 244,246" fill="#23191E" />
+      <rect x="228" y="290" width="40" height="22" rx="4" fill="url(#gold-p8)" />
+    
+      <rect x="310" y="310" width="76" height="285" rx="16" fill="#FFFFFF" stroke="#E5D5CE" stroke-width="2.5" />
+      <rect x="320" y="375" width="56" height="175" rx="8" fill="#C59B27" />
+      <polygon points="336,310 360,310 352,246 344,246" fill="#23191E" />
+      <rect x="328" y="290" width="40" height="22" rx="4" fill="url(#gold-p8)" />
+    
+      <rect x="410" y="310" width="76" height="285" rx="16" fill="#FFFFFF" stroke="#E5D5CE" stroke-width="2.5" />
+      <rect x="420" y="375" width="56" height="175" rx="8" fill="#1F6F6D" />
+      <polygon points="436,310 460,310 452,246 444,246" fill="#23191E" />
+      <rect x="428" y="290" width="40" height="22" rx="4" fill="url(#gold-p8)" />
+    
+      <rect x="510" y="310" width="76" height="285" rx="16" fill="#FFFFFF" stroke="#E5D5CE" stroke-width="2.5" />
+      <rect x="520" y="375" width="56" height="175" rx="8" fill="#36538A" />
+      <polygon points="536,310 560,310 552,246 544,246" fill="#23191E" />
+      <rect x="528" y="290" width="40" height="22" rx="4" fill="url(#gold-p8)" />
+    
+      <rect x="610" y="310" width="76" height="285" rx="16" fill="#FFFFFF" stroke="#E5D5CE" stroke-width="2.5" />
+      <rect x="620" y="375" width="56" height="175" rx="8" fill="#B76E79" />
+      <polygon points="636,310 660,310 652,246 644,246" fill="#23191E" />
+      <rect x="628" y="290" width="40" height="22" rx="4" fill="url(#gold-p8)" />
+    
+    <!-- Petri Art Glossy Resin Disc -->
+    <ellipse cx="450" cy="656" rx="195" ry="52" fill="#FFFFFF" stroke="url(#gold-p8)" stroke-width="3.5" />
+    <ellipse cx="410" cy="656" rx="68" ry="24" fill="#9B2C4A" opacity="0.55" />
+    <ellipse cx="485" cy="656" rx="72" ry="26" fill="#1F6F6D" opacity="0.48" />
+    <ellipse cx="450" cy="654" rx="42" ry="15" fill="#C59B27" opacity="0.58" />
+  </g>
+
+</svg>

@@ -1,0 +1,54 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 1280">
+  
+  <defs>
+    <linearGradient id="bg-r4" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#3A2B1D" />
+      <stop offset="55%" stop-color="#23191E" />
+      <stop offset="100%" stop-color="#1C1317" />
+    </linearGradient>
+    <linearGradient id="gold-r4" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#F5E4B3" />
+      <stop offset="45%" stop-color="#C59B27" />
+      <stop offset="100%" stop-color="#8C6A14" />
+    </linearGradient>
+    <linearGradient id="rose-r4" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#E7BCC3" />
+      <stop offset="50%" stop-color="#B76E79" />
+      <stop offset="100%" stop-color="#7B3E48" />
+    </linearGradient>
+    <linearGradient id="glass-r4" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FFFFFF" stop-opacity="0.72" />
+      <stop offset="40%" stop-color="#FFFFFF" stop-opacity="0.16" />
+      <stop offset="100%" stop-color="#FDF8F6" stop-opacity="0.45" />
+    </linearGradient>
+    <radialGradient id="glow-r4" cx="35%" cy="28%" r="65%">
+      <stop offset="0%" stop-color="#FFFFFF" stop-opacity="0.75" />
+      <stop offset="60%" stop-color="#FFFFFF" stop-opacity="0.08" />
+      <stop offset="100%" stop-color="#23191E" stop-opacity="0.12" />
+    </radialGradient>
+    <filter id="soft-shadow-r4" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="18" stdDeviation="20" flood-color="#23191E" flood-opacity="0.16" />
+    </filter>
+    <filter id="marble-tex-r4">
+      <feTurbulence type="fractalNoise" baseFrequency="0.012" numOctaves="4" seed="17" result="noise" />
+      <feColorMatrix type="matrix" values="1 0 0 0 0  0 0.94 0 0 0  0 0 0.92 0 0  0 0 0 0.08 0" />
+    </filter>
+  </defs>
+
+  <rect width="720" height="1280" fill="url(#bg-r4)" />
+  <rect width="720" height="1280" filter="url(#marble-tex-r4)" />
+  <ellipse cx="360" cy="520" rx="340" ry="440" fill="#C59B27" opacity="0.34" />
+  <!-- Liquid resin pouring curves -->
+  <path d="M-40,380 C160,260 320,520 520,360 C620,280 700,320 760,370 L760,780 C560,680 390,880 180,760 C80,700 20,740 -40,780 Z" fill="#E7C875" opacity="0.52" />
+  <path d="M-40,500 C170,390 340,610 545,455 C645,380 715,425 760,475" fill="none" stroke="url(#gold-r4)" stroke-width="9" />
+  <path d="M-40,615 C195,505 375,715 595,555 C665,505 715,540 760,575" fill="none" stroke="#FFFFFF" stroke-width="5" opacity="0.5" />
+  <!-- Glossy center focal sculpture -->
+  <circle cx="360" cy="510" r="195" fill="url(#glass-r4)" stroke="url(#gold-r4)" stroke-width="5" />
+  <ellipse cx="305" cy="435" rx="72" ry="30" transform="rotate(-24 305 435)" fill="#FFFFFF" opacity="0.45" />
+  <!-- Gold leaf speckles -->
+  <g fill="url(#gold-r4)">
+    <polygon points="240,460 258,452 264,470 246,476" />
+    <polygon points="440,540 462,532 468,552 448,558" />
+    <polygon points="350,625 368,618 374,634 356,640" />
+  </g>
+</svg>

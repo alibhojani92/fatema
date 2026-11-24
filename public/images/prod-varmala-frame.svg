@@ -1,0 +1,72 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 900">
+  
+  <defs>
+    <linearGradient id="bg-p9" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FDF8F6" />
+      <stop offset="55%" stop-color="#F7E7EA" />
+      <stop offset="100%" stop-color="#FDF8F6" />
+    </linearGradient>
+    <linearGradient id="gold-p9" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#F5E4B3" />
+      <stop offset="45%" stop-color="#C59B27" />
+      <stop offset="100%" stop-color="#8C6A14" />
+    </linearGradient>
+    <linearGradient id="rose-p9" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#E7BCC3" />
+      <stop offset="50%" stop-color="#B76E79" />
+      <stop offset="100%" stop-color="#7B3E48" />
+    </linearGradient>
+    <linearGradient id="glass-p9" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FFFFFF" stop-opacity="0.72" />
+      <stop offset="40%" stop-color="#FFFFFF" stop-opacity="0.16" />
+      <stop offset="100%" stop-color="#FDF8F6" stop-opacity="0.45" />
+    </linearGradient>
+    <radialGradient id="glow-p9" cx="35%" cy="28%" r="65%">
+      <stop offset="0%" stop-color="#FFFFFF" stop-opacity="0.75" />
+      <stop offset="60%" stop-color="#FFFFFF" stop-opacity="0.08" />
+      <stop offset="100%" stop-color="#23191E" stop-opacity="0.12" />
+    </radialGradient>
+    <filter id="soft-shadow-p9" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="18" stdDeviation="20" flood-color="#23191E" flood-opacity="0.16" />
+    </filter>
+    <filter id="marble-tex-p9">
+      <feTurbulence type="fractalNoise" baseFrequency="0.012" numOctaves="4" seed="17" result="noise" />
+      <feColorMatrix type="matrix" values="1 0 0 0 0  0 0.94 0 0 0  0 0 0.92 0 0  0 0 0 0.08 0" />
+    </filter>
+  </defs>
+
+  <rect width="900" height="900" fill="url(#bg-p9)" />
+  <rect width="900" height="900" filter="url(#marble-tex-p9)" />
+  <!-- Soft studio window light arch -->
+  <path d="M120,900 L120,250 A330,330 0 0,1 780,250 L780,900 Z" fill="#FFFFFF" opacity="0.34" />
+  <!-- Travertine pedestal base -->
+  <ellipse cx="450" cy="742" rx="285" ry="44" fill="#23191E" opacity="0.08" />
+  <rect x="145" y="705" width="610" height="58" rx="14" fill="#EFE0E2" stroke="#E6D7D0" stroke-width="2" />
+  
+  <g filter="url(#soft-shadow-p9)">
+    <!-- Crystal Clear Heirloom Preservation Block -->
+    <rect x="215" y="175" width="470" height="525" rx="28" fill="#FFFFFF" stroke="url(#gold-p9)" stroke-width="6" />
+    <rect x="240" y="200" width="420" height="475" rx="18" fill="#FDF8F6" stroke="#F0E2E5" stroke-width="2" />
+    <!-- Preserved Wedding Varmala Garland Arch -->
+    <path d="M315,285 C300,455 375,585 450,595 C525,585 600,455 585,285" fill="none" stroke="#9E2438" stroke-width="40" stroke-linecap="round" opacity="0.16" />
+    <!-- Crimson Roses -->
+    <circle cx="330" cy="312" r="42" fill="#9E2438" /><circle cx="330" cy="312" r="24" fill="#CA445B" />
+    <circle cx="570" cy="312" r="42" fill="#9E2438" /><circle cx="570" cy="312" r="24" fill="#CA445B" />
+    <circle cx="348" cy="430" r="38" fill="#B22D43" /><circle cx="348" cy="430" r="20" fill="#DE6479" />
+    <circle cx="552" cy="430" r="38" fill="#B22D43" /><circle cx="552" cy="430" r="20" fill="#DE6479" />
+    <circle cx="450" cy="548" r="48" fill="#8C1D30" /><circle cx="450" cy="548" r="28" fill="#C9455B" />
+    <!-- Mogra Jasmine Blossoms -->
+    <circle cx="395" cy="368" r="18" fill="#FFFFFF" stroke="#EADBD6" />
+    <circle cx="505" cy="368" r="18" fill="#FFFFFF" stroke="#EADBD6" />
+    <circle cx="388" cy="505" r="17" fill="#FFFFFF" stroke="#EADBD6" />
+    <circle cx="512" cy="505" r="17" fill="#FFFFFF" stroke="#EADBD6" />
+    <circle cx="450" cy="296" r="20" fill="#FFFFFF" stroke="#EADBD6" />
+    <!-- Gold Leaf Foil & Monogram Plaque -->
+    <text x="450" y="446" text-anchor="middle" font-family="Georgia,serif" font-style="italic" font-size="34" fill="url(#gold-p9)">Forever</text>
+    <polygon points="395,255 412,248 418,266 402,270" fill="url(#gold-p9)" />
+    <polygon points="498,476 516,468 522,486 504,492" fill="url(#gold-p9)" />
+    <!-- Glossy Glass Reflection -->
+    <polygon points="240,200 460,200 240,470" fill="#FFFFFF" opacity="0.34" />
+  </g>
+
+</svg>

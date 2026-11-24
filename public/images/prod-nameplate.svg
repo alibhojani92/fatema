@@ -1,0 +1,65 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 900">
+  
+  <defs>
+    <linearGradient id="bg-p10" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FDF8F6" />
+      <stop offset="55%" stop-color="#F4E7E4" />
+      <stop offset="100%" stop-color="#FDF8F6" />
+    </linearGradient>
+    <linearGradient id="gold-p10" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#F5E4B3" />
+      <stop offset="45%" stop-color="#C59B27" />
+      <stop offset="100%" stop-color="#8C6A14" />
+    </linearGradient>
+    <linearGradient id="rose-p10" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#E7BCC3" />
+      <stop offset="50%" stop-color="#B76E79" />
+      <stop offset="100%" stop-color="#7B3E48" />
+    </linearGradient>
+    <linearGradient id="glass-p10" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FFFFFF" stop-opacity="0.72" />
+      <stop offset="40%" stop-color="#FFFFFF" stop-opacity="0.16" />
+      <stop offset="100%" stop-color="#FDF8F6" stop-opacity="0.45" />
+    </linearGradient>
+    <radialGradient id="glow-p10" cx="35%" cy="28%" r="65%">
+      <stop offset="0%" stop-color="#FFFFFF" stop-opacity="0.75" />
+      <stop offset="60%" stop-color="#FFFFFF" stop-opacity="0.08" />
+      <stop offset="100%" stop-color="#23191E" stop-opacity="0.12" />
+    </radialGradient>
+    <filter id="soft-shadow-p10" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="18" stdDeviation="20" flood-color="#23191E" flood-opacity="0.16" />
+    </filter>
+    <filter id="marble-tex-p10">
+      <feTurbulence type="fractalNoise" baseFrequency="0.012" numOctaves="4" seed="24" result="noise" />
+      <feColorMatrix type="matrix" values="1 0 0 0 0  0 0.94 0 0 0  0 0 0.92 0 0  0 0 0 0.08 0" />
+    </filter>
+  </defs>
+
+  <rect width="900" height="900" fill="url(#bg-p10)" />
+  <rect width="900" height="900" filter="url(#marble-tex-p10)" />
+  <!-- Soft studio window light arch -->
+  <path d="M120,900 L120,250 A330,330 0 0,1 780,250 L780,900 Z" fill="#FFFFFF" opacity="0.34" />
+  <!-- Travertine pedestal base -->
+  <ellipse cx="450" cy="742" rx="285" ry="44" fill="#23191E" opacity="0.08" />
+  <rect x="145" y="705" width="610" height="58" rx="14" fill="#ECE0DC" stroke="#E6D7D0" stroke-width="2" />
+  
+  <g filter="url(#soft-shadow-p10)">
+    <!-- Luxury Custom Oval Resin Home Nameplate -->
+    <rect x="135" y="295" width="630" height="315" rx="157" fill="#FFFFFF" stroke="url(#gold-p10)" stroke-width="8" />
+    <rect x="155" y="315" width="590" height="275" rx="137" fill="#F8E8EC" />
+    <!-- Swirling blush & milky quartz resin -->
+    <path d="M175,455 C280,350 420,520 560,415 C640,355 690,395 725,445" fill="none" stroke="url(#rose-p10)" stroke-width="34" opacity="0.32" />
+    <path d="M185,485 C315,395 450,535 615,435 C670,400 705,425 725,455" fill="none" stroke="url(#gold-p10)" stroke-width="4.5" />
+    <!-- Mirror-Gold Raised Calligraphy -->
+    <text x="450" y="438" text-anchor="middle" font-family="Georgia,serif" font-size="44" fill="#23191E" letter-spacing="5">THE SHARMAS</text>
+    <line x1="335" y1="464" x2="565" y2="464" stroke="url(#gold-p10)" stroke-width="2" />
+    <text x="450" y="502" text-anchor="middle" font-family="sans-serif" font-size="18" fill="#7B3E48" letter-spacing="6">VILLA 402 · BESPOKE</text>
+    <!-- Crystal quartz accents -->
+    <g fill="#FFFFFF" stroke="#C59B27" stroke-width="1">
+      <polygon points="222,425 236,412 246,430 230,440" />
+      <polygon points="242,455 256,445 262,462 246,468" />
+      <polygon points="658,430 672,418 680,438 662,444" />
+    </g>
+  </g>
+
+</svg>

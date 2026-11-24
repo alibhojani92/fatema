@@ -1,0 +1,68 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 900">
+  
+  <defs>
+    <linearGradient id="bg-p12" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#F5FAFA" />
+      <stop offset="55%" stop-color="#E8F2F2" />
+      <stop offset="100%" stop-color="#F5FAFA" />
+    </linearGradient>
+    <linearGradient id="gold-p12" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#F5E4B3" />
+      <stop offset="45%" stop-color="#C59B27" />
+      <stop offset="100%" stop-color="#8C6A14" />
+    </linearGradient>
+    <linearGradient id="rose-p12" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#E7BCC3" />
+      <stop offset="50%" stop-color="#B76E79" />
+      <stop offset="100%" stop-color="#7B3E48" />
+    </linearGradient>
+    <linearGradient id="glass-p12" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FFFFFF" stop-opacity="0.72" />
+      <stop offset="40%" stop-color="#FFFFFF" stop-opacity="0.16" />
+      <stop offset="100%" stop-color="#FDF8F6" stop-opacity="0.45" />
+    </linearGradient>
+    <radialGradient id="glow-p12" cx="35%" cy="28%" r="65%">
+      <stop offset="0%" stop-color="#FFFFFF" stop-opacity="0.75" />
+      <stop offset="60%" stop-color="#FFFFFF" stop-opacity="0.08" />
+      <stop offset="100%" stop-color="#23191E" stop-opacity="0.12" />
+    </radialGradient>
+    <filter id="soft-shadow-p12" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="18" stdDeviation="20" flood-color="#23191E" flood-opacity="0.16" />
+    </filter>
+    <filter id="marble-tex-p12">
+      <feTurbulence type="fractalNoise" baseFrequency="0.012" numOctaves="4" seed="24" result="noise" />
+      <feColorMatrix type="matrix" values="1 0 0 0 0  0 0.94 0 0 0  0 0 0.92 0 0  0 0 0 0.08 0" />
+    </filter>
+  </defs>
+
+  <rect width="900" height="900" fill="url(#bg-p12)" />
+  <rect width="900" height="900" filter="url(#marble-tex-p12)" />
+  <!-- Soft studio window light arch -->
+  <path d="M120,900 L120,250 A330,330 0 0,1 780,250 L780,900 Z" fill="#FFFFFF" opacity="0.34" />
+  <!-- Travertine pedestal base -->
+  <ellipse cx="450" cy="742" rx="285" ry="44" fill="#23191E" opacity="0.08" />
+  <rect x="145" y="705" width="610" height="58" rx="14" fill="#E5ECEB" stroke="#E6D7D0" stroke-width="2" />
+  
+  <g filter="url(#soft-shadow-p12)">
+    <!-- Handcrafted Turquoise Ocean Wave Serving Tray -->
+    <rect x="145" y="245" width="610" height="410" rx="44" fill="#156369" stroke="url(#gold-p12)" stroke-width="7" />
+    <clipPath id="tray-clip-p12">
+      <rect x="155" y="255" width="590" height="390" rx="36" />
+    </clipPath>
+    <g clip-path="url(#tray-clip-p12)">
+      <!-- Deep ocean to shallow teal to sandy gold shore -->
+      <rect x="155" y="255" width="590" height="390" fill="#176970" />
+      <path d="M155,445 C290,390 420,490 560,420 C650,375 710,405 755,430 L755,650 L155,650 Z" fill="#3FA7A8" />
+      <path d="M155,520 C310,485 450,555 615,495 C685,470 725,495 755,510 L755,650 L155,650 Z" fill="#E8D7BC" />
+      <!-- Realistic White Seafoam Wave Lacing -->
+      <path d="M155,452 C285,395 425,495 565,422 C655,375 715,412 755,435" fill="none" stroke="#FFFFFF" stroke-width="18" opacity="0.88" />
+      <path d="M155,515 C305,478 455,548 618,488 C685,462 725,490 755,505" fill="none" stroke="#FFFFFF" stroke-width="14" opacity="0.92" />
+      <ellipse cx="320" cy="450" rx="48" ry="12" fill="#FFFFFF" opacity="0.55" />
+      <ellipse cx="520" cy="495" rx="58" ry="14" fill="#FFFFFF" opacity="0.5" />
+    </g>
+    <!-- Brushed Brass Side Handles -->
+    <rect x="168" y="395" width="22" height="110" rx="11" fill="url(#gold-p12)" />
+    <rect x="710" y="395" width="22" height="110" rx="11" fill="url(#gold-p12)" />
+  </g>
+
+</svg>

@@ -1,0 +1,89 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900">
+  
+  <defs>
+    <linearGradient id="bg-h3" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#24181E" />
+      <stop offset="55%" stop-color="#3D252E" />
+      <stop offset="100%" stop-color="#1D1418" />
+    </linearGradient>
+    <linearGradient id="gold-h3" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#F5E4B3" />
+      <stop offset="45%" stop-color="#C59B27" />
+      <stop offset="100%" stop-color="#8C6A14" />
+    </linearGradient>
+    <linearGradient id="rose-h3" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#E7BCC3" />
+      <stop offset="50%" stop-color="#B76E79" />
+      <stop offset="100%" stop-color="#7B3E48" />
+    </linearGradient>
+    <linearGradient id="glass-h3" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FFFFFF" stop-opacity="0.72" />
+      <stop offset="40%" stop-color="#FFFFFF" stop-opacity="0.16" />
+      <stop offset="100%" stop-color="#FDF8F6" stop-opacity="0.45" />
+    </linearGradient>
+    <radialGradient id="glow-h3" cx="35%" cy="28%" r="65%">
+      <stop offset="0%" stop-color="#FFFFFF" stop-opacity="0.75" />
+      <stop offset="60%" stop-color="#FFFFFF" stop-opacity="0.08" />
+      <stop offset="100%" stop-color="#23191E" stop-opacity="0.12" />
+    </radialGradient>
+    <filter id="soft-shadow-h3" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="18" stdDeviation="20" flood-color="#23191E" flood-opacity="0.16" />
+    </filter>
+    <filter id="marble-tex-h3">
+      <feTurbulence type="fractalNoise" baseFrequency="0.012" numOctaves="4" seed="17" result="noise" />
+      <feColorMatrix type="matrix" values="1 0 0 0 0  0 0.94 0 0 0  0 0 0.92 0 0  0 0 0 0.08 0" />
+    </filter>
+  </defs>
+
+  <rect width="1600" height="900" fill="url(#bg-h3)" />
+  <rect width="1600" height="900" filter="url(#marble-tex-h3)" />
+  <ellipse cx="1180" cy="440" rx="460" ry="380" fill="#C59B27" opacity="0.16" />
+  <!-- Geode Wall Clock -->
+  <g transform="translate(1220, 410)" filter="url(#soft-shadow-h3)">
+    <circle cx="0" cy="0" r="245" fill="#FDF8F6" stroke="url(#gold-h3)" stroke-width="8" />
+    <circle cx="0" cy="0" r="215" fill="#F2DCE0" />
+    <path d="M-190,-65 C-90,-150 40,-135 165,-45 C120,65 15,135 -125,115 C-185,105 -210,15 -190,-65 Z" fill="url(#rose-h3)" opacity="0.78" />
+    <path d="M-155,70 C-45,20 75,115 190,15" fill="none" stroke="url(#gold-h3)" stroke-width="5" />
+    <path d="M-165,-95 C-35,-15 85,-85 185,-12" fill="none" stroke="url(#gold-h3)" stroke-width="3.5" />
+    <!-- Clock indices -->
+    <g stroke="url(#gold-h3)" stroke-width="4" stroke-linecap="round">
+      <line x1="0" y1="-200" x2="0" y2="-175" />
+      <line x1="200" y1="0" x2="175" y2="0" />
+      <line x1="0" y1="200" x2="0" y2="175" />
+      <line x1="-200" y1="0" x2="-175" y2="0" />
+    </g>
+    <!-- Hands -->
+    <line x1="0" y1="16" x2="0" y2="-122" stroke="#23191E" stroke-width="6" stroke-linecap="round" />
+    <line x1="-12" y1="8" x2="96" y2="-52" stroke="url(#gold-h3)" stroke-width="5" stroke-linecap="round" />
+    <circle cx="0" cy="0" r="11" fill="url(#gold-h3)" />
+  </g>
+  <!-- Wedding Varmala Preservation Block overlapping left-front -->
+  <g transform="translate(830, 360)" filter="url(#soft-shadow-h3)">
+    <rect x="0" y="0" width="295" height="335" rx="22" fill="#FDF8F6" stroke="url(#gold-h3)" stroke-width="4.5" />
+    <rect x="16" y="16" width="263" height="303" rx="14" fill="url(#glass-h3)" stroke="#FFFFFF" stroke-opacity="0.7" />
+    <!-- Preserved Wedding Garland Crimson Roses & Jasmine -->
+    <g transform="translate(148, 170)">
+      <path d="M-85,-75 C-95,35 -35,105 0,115 C35,105 95,35 85,-75" fill="none" stroke="#9B2C3E" stroke-width="24" stroke-linecap="round" opacity="0.22" />
+      <circle cx="-68" cy="-58" r="28" fill="#9E2438" />
+      <circle cx="-68" cy="-58" r="16" fill="#C9455B" />
+      <circle cx="68" cy="-58" r="28" fill="#9E2438" />
+      <circle cx="68" cy="-58" r="16" fill="#C9455B" />
+      <circle cx="-55" cy="18" r="26" fill="#B22D43" />
+      <circle cx="55" cy="18" r="26" fill="#B22D43" />
+      <circle cx="0" cy="78" r="32" fill="#8C1D30" />
+      <circle cx="0" cy="78" r="18" fill="#C9455B" />
+      <!-- White mogra jasmine buds -->
+      <circle cx="-28" cy="-26" r="12" fill="#FFFFFF" />
+      <circle cx="28" cy="-26" r="12" fill="#FFFFFF" />
+      <circle cx="-30" cy="56" r="11" fill="#FFF9F4" />
+      <circle cx="30" cy="56" r="11" fill="#FFF9F4" />
+      <circle cx="0" cy="-62" r="14" fill="#FFF9F4" />
+      <!-- 24K Gold flakes -->
+      <polygon points="-14,-8 -2,-12 2,0 -10,4" fill="url(#gold-h3)" />
+      <polygon points="18,16 30,10 34,24 22,28" fill="url(#gold-h3)" />
+      <polygon points="-40,80 -28,74 -24,86 -36,90" fill="url(#gold-h3)" />
+    </g>
+    <!-- Glass shine diagonal -->
+    <polygon points="16,16 140,16 16,175" fill="#FFFFFF" opacity="0.34" />
+  </g>
+</svg>

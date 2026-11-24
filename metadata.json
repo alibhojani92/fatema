@@ -1,0 +1,6 @@
+{
+  "name": "Fatima Resin Art",
+  "description": "Luxury Indian D2C resin art supplies and bespoke handmade resin gifts — crystal-clear 2:1 & 3:1 epoxy resin, metallic mica pigments, silicone molds, wedding varmala preservation, and custom geode clocks.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

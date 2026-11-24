@@ -1,0 +1,79 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 900">
+  
+  <defs>
+    <linearGradient id="bg-p5" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FDF8F6" />
+      <stop offset="55%" stop-color="#F4EAE4" />
+      <stop offset="100%" stop-color="#FDF8F6" />
+    </linearGradient>
+    <linearGradient id="gold-p5" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#F5E4B3" />
+      <stop offset="45%" stop-color="#C59B27" />
+      <stop offset="100%" stop-color="#8C6A14" />
+    </linearGradient>
+    <linearGradient id="rose-p5" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#E7BCC3" />
+      <stop offset="50%" stop-color="#B76E79" />
+      <stop offset="100%" stop-color="#7B3E48" />
+    </linearGradient>
+    <linearGradient id="glass-p5" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FFFFFF" stop-opacity="0.72" />
+      <stop offset="40%" stop-color="#FFFFFF" stop-opacity="0.16" />
+      <stop offset="100%" stop-color="#FDF8F6" stop-opacity="0.45" />
+    </linearGradient>
+    <radialGradient id="glow-p5" cx="35%" cy="28%" r="65%">
+      <stop offset="0%" stop-color="#FFFFFF" stop-opacity="0.75" />
+      <stop offset="60%" stop-color="#FFFFFF" stop-opacity="0.08" />
+      <stop offset="100%" stop-color="#23191E" stop-opacity="0.12" />
+    </radialGradient>
+    <filter id="soft-shadow-p5" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="18" stdDeviation="20" flood-color="#23191E" flood-opacity="0.16" />
+    </filter>
+    <filter id="marble-tex-p5">
+      <feTurbulence type="fractalNoise" baseFrequency="0.012" numOctaves="4" seed="17" result="noise" />
+      <feColorMatrix type="matrix" values="1 0 0 0 0  0 0.94 0 0 0  0 0 0.92 0 0  0 0 0 0.08 0" />
+    </filter>
+  </defs>
+
+  <rect width="900" height="900" fill="url(#bg-p5)" />
+  <rect width="900" height="900" filter="url(#marble-tex-p5)" />
+  <!-- Soft studio window light arch -->
+  <path d="M120,900 L120,250 A330,330 0 0,1 780,250 L780,900 Z" fill="#FFFFFF" opacity="0.34" />
+  <!-- Travertine pedestal base -->
+  <ellipse cx="450" cy="742" rx="285" ry="44" fill="#23191E" opacity="0.08" />
+  <rect x="145" y="705" width="610" height="58" rx="14" fill="#EDE0D9" stroke="#E6D7D0" stroke-width="2" />
+  
+  <g filter="url(#soft-shadow-p5)">
+    <!-- Compartmentalized Acrylic Keepsake Box -->
+    <rect x="175" y="210" width="550" height="475" rx="22" fill="#FFFFFF" stroke="#E0CFC7" stroke-width="4" />
+    <line x1="358" y1="210" x2="358" y2="685" stroke="#E8DAD3" stroke-width="3" />
+    <line x1="542" y1="210" x2="542" y2="685" stroke="#E8DAD3" stroke-width="3" />
+    <line x1="175" y1="448" x2="725" y2="448" stroke="#E8DAD3" stroke-width="3" />
+    <!-- Cell 1: Crimson Pressed Roses -->
+    <circle cx="265" cy="325" r="42" fill="#A62B41" /><circle cx="265" cy="325" r="24" fill="#D2556A" />
+    <circle cx="235" cy="365" r="26" fill="#8C1F33" /><circle cx="305" cy="360" r="24" fill="#BE3A51" />
+    <!-- Cell 2: White Baby's Breath -->
+    <g fill="#FFFFFF" stroke="#D8CBC5" stroke-width="1.5">
+      <circle cx="425" cy="295" r="14" /><circle cx="460" cy="285" r="12" /><circle cx="485" cy="315" r="15" />
+      <circle cx="445" cy="340" r="16" /><circle cx="410" cy="355" r="13" /><circle cx="478" cy="365" r="14" />
+    </g>
+    <!-- Cell 3: Botanical Ferns -->
+    <path d="M585,395 C610,335 640,290 680,255" stroke="#4D7A58" stroke-width="5" fill="none" stroke-linecap="round" />
+    <ellipse cx="622" cy="342" rx="24" ry="9" transform="rotate(-35 622 342)" fill="#6B9874" />
+    <ellipse cx="648" cy="312" rx="22" ry="8" transform="rotate(-35 648 312)" fill="#6B9874" />
+    <ellipse cx="640" cy="355" rx="22" ry="8" transform="rotate(25 640 355)" fill="#588563" />
+    <!-- Cell 4: Lavender Sprigs -->
+    <path d="M230,625 L305,505" stroke="#687C5C" stroke-width="4" stroke-linecap="round" />
+    <circle cx="288" cy="528" r="11" fill="#8E6DA8" /><circle cx="274" cy="548" r="12" fill="#A282BC" />
+    <circle cx="260" cy="568" r="11" fill="#7D5C97" /><circle cx="300" cy="512" r="10" fill="#B597CF" />
+    <!-- Cell 5: Peach Marigold / Daisy Petals -->
+    <circle cx="450" cy="565" r="40" fill="#E39D5B" /><circle cx="450" cy="565" r="18" fill="#C59B27" />
+    <circle cx="412" cy="600" r="24" fill="#F0B87D" />
+    <!-- Cell 6: Blush Hydrangea -->
+    <circle cx="622" cy="548" r="28" fill="#E6B2BC" /><circle cx="658" cy="566" r="26" fill="#D595A2" />
+    <circle cx="620" cy="596" r="25" fill="#F0C8D0" />
+    <!-- Acrylic lid reflection -->
+    <polygon points="175,210 430,210 175,470" fill="#FFFFFF" opacity="0.22" />
+  </g>
+
+</svg>

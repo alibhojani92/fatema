@@ -1,0 +1,70 @@
+@import "tailwindcss";
+
+@theme {
+  --font-serif: 'Playfair Display', Georgia, Cambria, 'Times New Roman', serif;
+  --font-sans: 'Plus Jakarta Sans', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+
+  --color-canvas: #FFFFFF;
+  --color-ivory: #FDF8F6;
+  --color-blush: #F6EAE6;
+  --color-rose: #B76E79;
+  --color-rose-dark: #9B5560;
+  --color-gold: #C59B27;
+  --color-gold-soft: #E8D5A3;
+  --color-espresso: #23191E;
+  --color-espresso-muted: #5C4B52;
+  --color-whatsapp: #25D366;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    font-family: var(--font-sans);
+    color: var(--color-espresso);
+    background-color: var(--color-canvas);
+  }
+
+  h1, h2, h3, .font-serif {
+    font-family: var(--font-serif);
+    text-wrap: balance;
+  }
+
+  button, a, select, input, textarea {
+    outline-color: var(--color-rose);
+  }
+}
+
+.tabular-nums {
+  font-variant-numeric: tabular-nums;
+}
+
+/* Custom subtle scrollbars for horizontal strips & drawers */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+@keyframes subtleShimmer {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+.reel-shimmer {
+  animation: subtleShimmer 3.2s cubic-bezier(0.16, 1, 0.3, 1) infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  .reel-shimmer {
+    animation: none;
+  }
+}

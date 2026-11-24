@@ -1,0 +1,75 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900">
+  
+  <defs>
+    <linearGradient id="bg-h1" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#2B1F24" />
+      <stop offset="55%" stop-color="#4B2E37" />
+      <stop offset="100%" stop-color="#23191E" />
+    </linearGradient>
+    <linearGradient id="gold-h1" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#F5E4B3" />
+      <stop offset="45%" stop-color="#C59B27" />
+      <stop offset="100%" stop-color="#8C6A14" />
+    </linearGradient>
+    <linearGradient id="rose-h1" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#E7BCC3" />
+      <stop offset="50%" stop-color="#B76E79" />
+      <stop offset="100%" stop-color="#7B3E48" />
+    </linearGradient>
+    <linearGradient id="glass-h1" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FFFFFF" stop-opacity="0.72" />
+      <stop offset="40%" stop-color="#FFFFFF" stop-opacity="0.16" />
+      <stop offset="100%" stop-color="#FDF8F6" stop-opacity="0.45" />
+    </linearGradient>
+    <radialGradient id="glow-h1" cx="35%" cy="28%" r="65%">
+      <stop offset="0%" stop-color="#FFFFFF" stop-opacity="0.75" />
+      <stop offset="60%" stop-color="#FFFFFF" stop-opacity="0.08" />
+      <stop offset="100%" stop-color="#23191E" stop-opacity="0.12" />
+    </radialGradient>
+    <filter id="soft-shadow-h1" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="18" stdDeviation="20" flood-color="#23191E" flood-opacity="0.16" />
+    </filter>
+    <filter id="marble-tex-h1">
+      <feTurbulence type="fractalNoise" baseFrequency="0.012" numOctaves="4" seed="17" result="noise" />
+      <feColorMatrix type="matrix" values="1 0 0 0 0  0 0.94 0 0 0  0 0 0.92 0 0  0 0 0 0.08 0" />
+    </filter>
+  </defs>
+
+  <rect width="1600" height="900" fill="url(#bg-h1)" />
+  <rect width="1600" height="900" filter="url(#marble-tex-h1)" />
+  <!-- Ambient studio sunlit glow -->
+  <ellipse cx="1160" cy="430" rx="540" ry="420" fill="#B76E79" opacity="0.22" />
+  <ellipse cx="1280" cy="240" rx="340" ry="260" fill="#E8D5A3" opacity="0.18" />
+  <!-- Sculptural geode panel being poured on right side -->
+  <g transform="translate(880, 140)" filter="url(#soft-shadow-h1)">
+    <path d="M90,340 C60,180 210,40 400,65 C550,85 655,215 620,385 C585,545 425,650 250,625 C120,605 110,455 90,340 Z" fill="#FDF8F6" stroke="url(#gold-h1)" stroke-width="5" />
+    <path d="M135,345 C115,215 235,105 390,122 C515,136 592,240 562,375 C532,505 405,585 268,566 C168,552 150,435 135,345 Z" fill="#F2DCE0" opacity="0.88" />
+    <path d="M190,345 C180,255 265,175 375,186 C468,195 524,272 500,368 C478,460 388,518 290,504 C218,494 198,412 190,345 Z" fill="url(#rose-h1)" opacity="0.62" />
+    <!-- Gold leaf veins -->
+    <path d="M118,325 C210,275 330,355 465,245 C525,195 570,225 605,275" fill="none" stroke="url(#gold-h1)" stroke-width="4.5" stroke-linecap="round" />
+    <path d="M162,465 C258,415 368,475 495,385 C540,352 575,375 595,410" fill="none" stroke="url(#gold-h1)" stroke-width="3" stroke-linecap="round" opacity="0.9" />
+    <path d="M245,145 C295,215 340,265 435,295" fill="none" stroke="#FFFFFF" stroke-width="6" stroke-linecap="round" opacity="0.45" />
+    <!-- Crystal resin pour stream from top right -->
+    <path d="M475,-140 C465,-40 425,90 385,220 C370,268 355,315 375,345 C395,375 445,355 442,300 C438,225 495,60 545,-140 Z" fill="url(#glass-h1)" stroke="#FFFFFF" stroke-opacity="0.55" stroke-width="2" />
+    <!-- Glossy liquid specular highlights -->
+    <ellipse cx="388" cy="318" rx="74" ry="46" fill="#FFFFFF" opacity="0.34" />
+    <ellipse cx="372" cy="308" rx="34" ry="18" fill="#FFFFFF" opacity="0.65" />
+    <!-- Floating gold leaf flecks -->
+    <g fill="url(#gold-h1)">
+      <polygon points="280,250 292,244 298,258 284,262" />
+      <polygon points="342,390 356,386 359,398 345,402" />
+      <polygon points="448,312 460,305 466,318 452,324" />
+      <polygon points="240,420 250,414 256,426 244,430" />
+      <polygon points="410,200 422,195 426,208 414,211" />
+    </g>
+  </g>
+  <!-- Twin luxury resin bottles silhouette accent -->
+  <g transform="translate(1310, 520)" opacity="0.92">
+    <rect x="0" y="70" width="96" height="190" rx="18" fill="#FDF8F6" opacity="0.92" />
+    <rect x="26" y="34" width="44" height="36" rx="6" fill="url(#gold-h1)" />
+    <rect x="16" y="115" width="64" height="72" rx="4" fill="#F6EAE6" stroke="#C59B27" stroke-opacity="0.4" />
+    <rect x="114" y="95" width="84" height="165" rx="16" fill="#FFFFFF" opacity="0.88" />
+    <rect x="136" y="62" width="40" height="33" rx="6" fill="url(#gold-h1)" />
+    <rect x="128" y="135" width="56" height="60" rx="4" fill="#F6EAE6" stroke="#B76E79" stroke-opacity="0.4" />
+  </g>
+</svg>

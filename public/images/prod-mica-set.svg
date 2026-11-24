@@ -1,0 +1,102 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 900">
+  
+  <defs>
+    <linearGradient id="bg-p3" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FDF8F6" />
+      <stop offset="55%" stop-color="#F5E4E8" />
+      <stop offset="100%" stop-color="#FDF8F6" />
+    </linearGradient>
+    <linearGradient id="gold-p3" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#F5E4B3" />
+      <stop offset="45%" stop-color="#C59B27" />
+      <stop offset="100%" stop-color="#8C6A14" />
+    </linearGradient>
+    <linearGradient id="rose-p3" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#E7BCC3" />
+      <stop offset="50%" stop-color="#B76E79" />
+      <stop offset="100%" stop-color="#7B3E48" />
+    </linearGradient>
+    <linearGradient id="glass-p3" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FFFFFF" stop-opacity="0.72" />
+      <stop offset="40%" stop-color="#FFFFFF" stop-opacity="0.16" />
+      <stop offset="100%" stop-color="#FDF8F6" stop-opacity="0.45" />
+    </linearGradient>
+    <radialGradient id="glow-p3" cx="35%" cy="28%" r="65%">
+      <stop offset="0%" stop-color="#FFFFFF" stop-opacity="0.75" />
+      <stop offset="60%" stop-color="#FFFFFF" stop-opacity="0.08" />
+      <stop offset="100%" stop-color="#23191E" stop-opacity="0.12" />
+    </radialGradient>
+    <filter id="soft-shadow-p3" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="18" stdDeviation="20" flood-color="#23191E" flood-opacity="0.16" />
+    </filter>
+    <filter id="marble-tex-p3">
+      <feTurbulence type="fractalNoise" baseFrequency="0.012" numOctaves="4" seed="17" result="noise" />
+      <feColorMatrix type="matrix" values="1 0 0 0 0  0 0.94 0 0 0  0 0 0.92 0 0  0 0 0 0.08 0" />
+    </filter>
+  </defs>
+
+  <rect width="900" height="900" fill="url(#bg-p3)" />
+  <rect width="900" height="900" filter="url(#marble-tex-p3)" />
+  <!-- Soft studio window light arch -->
+  <path d="M120,900 L120,250 A330,330 0 0,1 780,250 L780,900 Z" fill="#FFFFFF" opacity="0.34" />
+  <!-- Travertine pedestal base -->
+  <ellipse cx="450" cy="742" rx="285" ry="44" fill="#23191E" opacity="0.08" />
+  <rect x="145" y="705" width="610" height="58" rx="14" fill="#EEDFD9" stroke="#E6D7D0" stroke-width="2" />
+  
+  <g filter="url(#soft-shadow-p3)">
+    <!-- Luxury Linen Presentation Tray -->
+    <rect x="165" y="210" width="570" height="480" rx="28" fill="#FFFFFF" stroke="url(#gold-p3)" stroke-width="4" />
+    <rect x="190" y="235" width="520" height="430" rx="18" fill="#FDF8F6" />
+    <!-- 12 Shimmering Mica Jars (4x3 grid) -->
+    
+      <circle cx="265" cy="315" r="48" fill="#FFFFFF" stroke="#E4D4CC" stroke-width="2.5" />
+      <circle cx="265" cy="315" r="38" fill="#C59B27" />
+      <ellipse cx="253" cy="303" rx="14" ry="8" fill="#FFFFFF" opacity="0.38" />
+    
+      <circle cx="388" cy="315" r="48" fill="#FFFFFF" stroke="#E4D4CC" stroke-width="2.5" />
+      <circle cx="388" cy="315" r="38" fill="#B76E79" />
+      <ellipse cx="376" cy="303" rx="14" ry="8" fill="#FFFFFF" opacity="0.38" />
+    
+      <circle cx="511" cy="315" r="48" fill="#FFFFFF" stroke="#E4D4CC" stroke-width="2.5" />
+      <circle cx="511" cy="315" r="38" fill="#8C324B" />
+      <ellipse cx="499" cy="303" rx="14" ry="8" fill="#FFFFFF" opacity="0.38" />
+    
+      <circle cx="634" cy="315" r="48" fill="#FFFFFF" stroke="#E4D4CC" stroke-width="2.5" />
+      <circle cx="634" cy="315" r="38" fill="#F4EAE6" />
+      <ellipse cx="622" cy="303" rx="14" ry="8" fill="#FFFFFF" opacity="0.38" />
+    
+      <circle cx="265" cy="448" r="48" fill="#FFFFFF" stroke="#E4D4CC" stroke-width="2.5" />
+      <circle cx="265" cy="448" r="38" fill="#21716D" />
+      <ellipse cx="253" cy="436" rx="14" ry="8" fill="#FFFFFF" opacity="0.38" />
+    
+      <circle cx="388" cy="448" r="48" fill="#FFFFFF" stroke="#E4D4CC" stroke-width="2.5" />
+      <circle cx="388" cy="448" r="38" fill="#3A5A8C" />
+      <ellipse cx="376" cy="436" rx="14" ry="8" fill="#FFFFFF" opacity="0.38" />
+    
+      <circle cx="511" cy="448" r="48" fill="#FFFFFF" stroke="#E4D4CC" stroke-width="2.5" />
+      <circle cx="511" cy="448" r="38" fill="#B87344" />
+      <ellipse cx="499" cy="436" rx="14" ry="8" fill="#FFFFFF" opacity="0.38" />
+    
+      <circle cx="634" cy="448" r="48" fill="#FFFFFF" stroke="#E4D4CC" stroke-width="2.5" />
+      <circle cx="634" cy="448" r="38" fill="#D6A1A8" />
+      <ellipse cx="622" cy="436" rx="14" ry="8" fill="#FFFFFF" opacity="0.38" />
+    
+      <circle cx="265" cy="581" r="48" fill="#FFFFFF" stroke="#E4D4CC" stroke-width="2.5" />
+      <circle cx="265" cy="581" r="38" fill="#4A3359" />
+      <ellipse cx="253" cy="569" rx="14" ry="8" fill="#FFFFFF" opacity="0.38" />
+    
+      <circle cx="388" cy="581" r="48" fill="#FFFFFF" stroke="#E4D4CC" stroke-width="2.5" />
+      <circle cx="388" cy="581" r="38" fill="#C78E52" />
+      <ellipse cx="376" cy="569" rx="14" ry="8" fill="#FFFFFF" opacity="0.38" />
+    
+      <circle cx="511" cy="581" r="48" fill="#FFFFFF" stroke="#E4D4CC" stroke-width="2.5" />
+      <circle cx="511" cy="581" r="38" fill="#2E6B4F" />
+      <ellipse cx="499" cy="569" rx="14" ry="8" fill="#FFFFFF" opacity="0.38" />
+    
+      <circle cx="634" cy="581" r="48" fill="#FFFFFF" stroke="#E4D4CC" stroke-width="2.5" />
+      <circle cx="634" cy="581" r="38" fill="#23191E" />
+      <ellipse cx="622" cy="569" rx="14" ry="8" fill="#FFFFFF" opacity="0.38" />
+    
+  </g>
+
+</svg>

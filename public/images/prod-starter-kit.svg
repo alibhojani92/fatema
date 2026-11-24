@@ -1,0 +1,67 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 900">
+  
+  <defs>
+    <linearGradient id="bg-p11" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FDF8F6" />
+      <stop offset="55%" stop-color="#F3E5E3" />
+      <stop offset="100%" stop-color="#FDF8F6" />
+    </linearGradient>
+    <linearGradient id="gold-p11" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#F5E4B3" />
+      <stop offset="45%" stop-color="#C59B27" />
+      <stop offset="100%" stop-color="#8C6A14" />
+    </linearGradient>
+    <linearGradient id="rose-p11" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#E7BCC3" />
+      <stop offset="50%" stop-color="#B76E79" />
+      <stop offset="100%" stop-color="#7B3E48" />
+    </linearGradient>
+    <linearGradient id="glass-p11" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FFFFFF" stop-opacity="0.72" />
+      <stop offset="40%" stop-color="#FFFFFF" stop-opacity="0.16" />
+      <stop offset="100%" stop-color="#FDF8F6" stop-opacity="0.45" />
+    </linearGradient>
+    <radialGradient id="glow-p11" cx="35%" cy="28%" r="65%">
+      <stop offset="0%" stop-color="#FFFFFF" stop-opacity="0.75" />
+      <stop offset="60%" stop-color="#FFFFFF" stop-opacity="0.08" />
+      <stop offset="100%" stop-color="#23191E" stop-opacity="0.12" />
+    </radialGradient>
+    <filter id="soft-shadow-p11" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="18" stdDeviation="20" flood-color="#23191E" flood-opacity="0.16" />
+    </filter>
+    <filter id="marble-tex-p11">
+      <feTurbulence type="fractalNoise" baseFrequency="0.012" numOctaves="4" seed="24" result="noise" />
+      <feColorMatrix type="matrix" values="1 0 0 0 0  0 0.94 0 0 0  0 0 0.92 0 0  0 0 0 0.08 0" />
+    </filter>
+  </defs>
+
+  <rect width="900" height="900" fill="url(#bg-p11)" />
+  <rect width="900" height="900" filter="url(#marble-tex-p11)" />
+  <!-- Soft studio window light arch -->
+  <path d="M120,900 L120,250 A330,330 0 0,1 780,250 L780,900 Z" fill="#FFFFFF" opacity="0.34" />
+  <!-- Travertine pedestal base -->
+  <ellipse cx="450" cy="742" rx="285" ry="44" fill="#23191E" opacity="0.08" />
+  <rect x="145" y="705" width="610" height="58" rx="14" fill="#EBDDD9" stroke="#E6D7D0" stroke-width="2" />
+  
+  <g filter="url(#soft-shadow-p11)">
+    <!-- Rigid Luxury Starter Gift Box -->
+    <rect x="160" y="215" width="580" height="470" rx="26" fill="#23191E" />
+    <rect x="184" y="239" width="532" height="422" rx="18" fill="#FDF8F6" />
+    <!-- Mini Resin A+B -->
+    <rect x="220" y="280" width="96" height="225" rx="18" fill="#FFFFFF" stroke="#E2D3CC" stroke-width="2.5" />
+    <rect x="246" y="252" width="44" height="28" rx="6" fill="url(#gold-p11)" />
+    <rect x="332" y="308" width="84" height="197" rx="16" fill="#FFFFFF" stroke="#E2D3CC" stroke-width="2.5" />
+    <rect x="356" y="282" width="36" height="26" rx="6" fill="url(#gold-p11)" />
+    <!-- 4 Mica Jars -->
+    <circle cx="485" cy="322" r="34" fill="url(#rose-p11)" stroke="#FFFFFF" stroke-width="4" />
+    <circle cx="570" cy="322" r="34" fill="url(#gold-p11)" stroke="#FFFFFF" stroke-width="4" />
+    <circle cx="648" cy="322" r="34" fill="#1F6F6D" stroke="#FFFFFF" stroke-width="4" />
+    <!-- Silicone Coaster Molds + Stirrers -->
+    <circle cx="495" cy="445" r="56" fill="#FFFFFF" stroke="#E5D5CE" stroke-width="5" />
+    <circle cx="615" cy="445" r="56" fill="#F7E4E8" stroke="url(#gold-p11)" stroke-width="4" />
+    <!-- Bottom Satin Ribbon Strip -->
+    <rect x="220" y="545" width="460" height="80" rx="12" fill="#F6EAE6" stroke="#C59B27" stroke-opacity="0.45" />
+    <text x="450" y="594" text-anchor="middle" font-family="Georgia,serif" font-size="24" fill="#23191E" letter-spacing="4">COMPLETE RESIN ATELIER KIT</text>
+  </g>
+
+</svg>

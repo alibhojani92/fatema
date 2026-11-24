@@ -1,0 +1,63 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 900">
+  
+  <defs>
+    <linearGradient id="bg-p7" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FDF8F6" />
+      <stop offset="55%" stop-color="#F2E8DE" />
+      <stop offset="100%" stop-color="#FDF8F6" />
+    </linearGradient>
+    <linearGradient id="gold-p7" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#F5E4B3" />
+      <stop offset="45%" stop-color="#C59B27" />
+      <stop offset="100%" stop-color="#8C6A14" />
+    </linearGradient>
+    <linearGradient id="rose-p7" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#E7BCC3" />
+      <stop offset="50%" stop-color="#B76E79" />
+      <stop offset="100%" stop-color="#7B3E48" />
+    </linearGradient>
+    <linearGradient id="glass-p7" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FFFFFF" stop-opacity="0.72" />
+      <stop offset="40%" stop-color="#FFFFFF" stop-opacity="0.16" />
+      <stop offset="100%" stop-color="#FDF8F6" stop-opacity="0.45" />
+    </linearGradient>
+    <radialGradient id="glow-p7" cx="35%" cy="28%" r="65%">
+      <stop offset="0%" stop-color="#FFFFFF" stop-opacity="0.75" />
+      <stop offset="60%" stop-color="#FFFFFF" stop-opacity="0.08" />
+      <stop offset="100%" stop-color="#23191E" stop-opacity="0.12" />
+    </radialGradient>
+    <filter id="soft-shadow-p7" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="18" stdDeviation="20" flood-color="#23191E" flood-opacity="0.16" />
+    </filter>
+    <filter id="marble-tex-p7">
+      <feTurbulence type="fractalNoise" baseFrequency="0.012" numOctaves="4" seed="17" result="noise" />
+      <feColorMatrix type="matrix" values="1 0 0 0 0  0 0.94 0 0 0  0 0 0.92 0 0  0 0 0 0.08 0" />
+    </filter>
+  </defs>
+
+  <rect width="900" height="900" fill="url(#bg-p7)" />
+  <rect width="900" height="900" filter="url(#marble-tex-p7)" />
+  <!-- Soft studio window light arch -->
+  <path d="M120,900 L120,250 A330,330 0 0,1 780,250 L780,900 Z" fill="#FFFFFF" opacity="0.34" />
+  <!-- Travertine pedestal base -->
+  <ellipse cx="450" cy="742" rx="285" ry="44" fill="#23191E" opacity="0.08" />
+  <rect x="145" y="705" width="610" height="58" rx="14" fill="#EAE0D7" stroke="#E6D7D0" stroke-width="2" />
+  
+  <g filter="url(#soft-shadow-p7)">
+    <!-- 12-inch Smooth Birch MDF Clock Base -->
+    <circle cx="430" cy="445" r="248" fill="#E9D6BE" stroke="#D4BC9E" stroke-width="8" />
+    <circle cx="430" cy="445" r="224" fill="#F2E3CF" />
+    <circle cx="430" cy="445" r="14" fill="#23191E" />
+    <!-- Gold Roman Numerals Set Arranged -->
+    <text x="430" y="264" text-anchor="middle" font-family="Georgia,serif" font-size="34" fill="url(#gold-p7)">XII</text>
+    <text x="615" y="458" text-anchor="middle" font-family="Georgia,serif" font-size="34" fill="url(#gold-p7)">III</text>
+    <text x="430" y="646" text-anchor="middle" font-family="Georgia,serif" font-size="34" fill="url(#gold-p7)">VI</text>
+    <text x="244" y="458" text-anchor="middle" font-family="Georgia,serif" font-size="34" fill="url(#gold-p7)">IX</text>
+    <!-- Brushed Brass Clock Hands + Mechanism beside -->
+    <line x1="430" y1="455" x2="430" y2="305" stroke="url(#gold-p7)" stroke-width="8" stroke-linecap="round" />
+    <line x1="422" y1="450" x2="545" y2="388" stroke="url(#gold-p7)" stroke-width="7" stroke-linecap="round" />
+    <rect x="642" y="565" width="96" height="96" rx="14" fill="#23191E" />
+    <circle cx="690" cy="613" r="18" fill="url(#gold-p7)" />
+  </g>
+
+</svg>

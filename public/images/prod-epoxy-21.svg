@@ -1,0 +1,68 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 900">
+  
+  <defs>
+    <linearGradient id="bg-p1" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FDF8F6" />
+      <stop offset="55%" stop-color="#F4E8E3" />
+      <stop offset="100%" stop-color="#FDF8F6" />
+    </linearGradient>
+    <linearGradient id="gold-p1" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#F5E4B3" />
+      <stop offset="45%" stop-color="#C59B27" />
+      <stop offset="100%" stop-color="#8C6A14" />
+    </linearGradient>
+    <linearGradient id="rose-p1" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#E7BCC3" />
+      <stop offset="50%" stop-color="#B76E79" />
+      <stop offset="100%" stop-color="#7B3E48" />
+    </linearGradient>
+    <linearGradient id="glass-p1" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FFFFFF" stop-opacity="0.72" />
+      <stop offset="40%" stop-color="#FFFFFF" stop-opacity="0.16" />
+      <stop offset="100%" stop-color="#FDF8F6" stop-opacity="0.45" />
+    </linearGradient>
+    <radialGradient id="glow-p1" cx="35%" cy="28%" r="65%">
+      <stop offset="0%" stop-color="#FFFFFF" stop-opacity="0.75" />
+      <stop offset="60%" stop-color="#FFFFFF" stop-opacity="0.08" />
+      <stop offset="100%" stop-color="#23191E" stop-opacity="0.12" />
+    </radialGradient>
+    <filter id="soft-shadow-p1" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="18" stdDeviation="20" flood-color="#23191E" flood-opacity="0.16" />
+    </filter>
+    <filter id="marble-tex-p1">
+      <feTurbulence type="fractalNoise" baseFrequency="0.012" numOctaves="4" seed="17" result="noise" />
+      <feColorMatrix type="matrix" values="1 0 0 0 0  0 0.94 0 0 0  0 0 0.92 0 0  0 0 0 0.08 0" />
+    </filter>
+  </defs>
+
+  <rect width="900" height="900" fill="url(#bg-p1)" />
+  <rect width="900" height="900" filter="url(#marble-tex-p1)" />
+  <!-- Soft studio window light arch -->
+  <path d="M120,900 L120,250 A330,330 0 0,1 780,250 L780,900 Z" fill="#FFFFFF" opacity="0.34" />
+  <!-- Travertine pedestal base -->
+  <ellipse cx="450" cy="742" rx="285" ry="44" fill="#23191E" opacity="0.08" />
+  <rect x="145" y="705" width="610" height="58" rx="14" fill="#EFE2DC" stroke="#E6D7D0" stroke-width="2" />
+  
+  <g filter="url(#soft-shadow-p1)">
+    <!-- Part A Resin Tall Bottle -->
+    <rect x="235" y="210" width="190" height="495" rx="34" fill="#FFFFFF" stroke="#E7D8D1" stroke-width="3" />
+    <rect x="255" y="290" width="150" height="395" rx="20" fill="#FDF8F6" opacity="0.7" />
+    <rect x="285" y="138" width="90" height="72" rx="14" fill="url(#gold-p1)" />
+    <rect x="262" y="345" width="136" height="225" rx="10" fill="#FDF8F6" stroke="#C59B27" stroke-opacity="0.55" stroke-width="2" />
+    <text x="330" y="420" text-anchor="middle" font-family="Georgia,serif" font-size="22" fill="#23191E" letter-spacing="3">FATIMA</text>
+    <text x="330" y="458" text-anchor="middle" font-family="sans-serif" font-size="15" fill="#B76E79" letter-spacing="2">PART A · RESIN</text>
+    <line x1="295" y1="482" x2="365" y2="482" stroke="#C59B27" stroke-width="1.5" />
+    <text x="330" y="518" text-anchor="middle" font-family="sans-serif" font-size="14" fill="#5C4B52">ULTRA CLEAR 2:1</text>
+    <!-- Part B Hardener Bottle -->
+    <rect x="462" y="292" width="166" height="413" rx="30" fill="#FFFFFF" stroke="#E7D8D1" stroke-width="3" />
+    <rect x="505" y="226" width="80" height="66" rx="12" fill="url(#gold-p1)" />
+    <rect x="486" y="395" width="118" height="190" rx="10" fill="#FDF8F6" stroke="#B76E79" stroke-opacity="0.55" stroke-width="2" />
+    <text x="545" y="462" text-anchor="middle" font-family="Georgia,serif" font-size="19" fill="#23191E" letter-spacing="2">FATIMA</text>
+    <text x="545" y="496" text-anchor="middle" font-family="sans-serif" font-size="13" fill="#B76E79" letter-spacing="2">PART B</text>
+    <text x="545" y="528" text-anchor="middle" font-family="sans-serif" font-size="12" fill="#5C4B52">UV HARDENER</text>
+    <!-- Glossy cured crystal disc foreground -->
+    <ellipse cx="635" cy="680" rx="95" ry="38" fill="url(#glass-p1)" stroke="url(#gold-p1)" stroke-width="3" />
+    <ellipse cx="615" cy="672" rx="38" ry="12" fill="#FFFFFF" opacity="0.82" />
+  </g>
+
+</svg>

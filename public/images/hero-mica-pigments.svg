@@ -1,0 +1,83 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900">
+  
+  <defs>
+    <linearGradient id="bg-h2" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#261B21" />
+      <stop offset="55%" stop-color="#422631" />
+      <stop offset="100%" stop-color="#1F161B" />
+    </linearGradient>
+    <linearGradient id="gold-h2" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#F5E4B3" />
+      <stop offset="45%" stop-color="#C59B27" />
+      <stop offset="100%" stop-color="#8C6A14" />
+    </linearGradient>
+    <linearGradient id="rose-h2" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#E7BCC3" />
+      <stop offset="50%" stop-color="#B76E79" />
+      <stop offset="100%" stop-color="#7B3E48" />
+    </linearGradient>
+    <linearGradient id="glass-h2" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FFFFFF" stop-opacity="0.72" />
+      <stop offset="40%" stop-color="#FFFFFF" stop-opacity="0.16" />
+      <stop offset="100%" stop-color="#FDF8F6" stop-opacity="0.45" />
+    </linearGradient>
+    <radialGradient id="glow-h2" cx="35%" cy="28%" r="65%">
+      <stop offset="0%" stop-color="#FFFFFF" stop-opacity="0.75" />
+      <stop offset="60%" stop-color="#FFFFFF" stop-opacity="0.08" />
+      <stop offset="100%" stop-color="#23191E" stop-opacity="0.12" />
+    </radialGradient>
+    <filter id="soft-shadow-h2" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="18" stdDeviation="20" flood-color="#23191E" flood-opacity="0.16" />
+    </filter>
+    <filter id="marble-tex-h2">
+      <feTurbulence type="fractalNoise" baseFrequency="0.012" numOctaves="4" seed="17" result="noise" />
+      <feColorMatrix type="matrix" values="1 0 0 0 0  0 0.94 0 0 0  0 0 0.92 0 0  0 0 0 0.08 0" />
+    </filter>
+  </defs>
+
+  <rect width="1600" height="900" fill="url(#bg-h2)" />
+  <rect width="1600" height="900" filter="url(#marble-tex-h2)" />
+  <!-- Swirling iridescent pigment clouds on right -->
+  <g opacity="0.72">
+    <circle cx="1120" cy="430" r="320" fill="#B76E79" opacity="0.28" />
+    <circle cx="1310" cy="310" r="240" fill="#C59B27" opacity="0.26" />
+    <circle cx="1220" cy="610" r="230" fill="#2A7B76" opacity="0.25" />
+  </g>
+  <!-- Open luxury mica jars flat-lay -->
+  <g transform="translate(880, 150)" filter="url(#soft-shadow-h2)">
+    <!-- Jar 1: Rose Gold -->
+    <g transform="translate(150, 120)">
+      <circle cx="0" cy="0" r="98" fill="#FDF8F6" stroke="url(#gold-h2)" stroke-width="5" />
+      <circle cx="0" cy="0" r="80" fill="url(#rose-h2)" />
+      <path d="M-45,-15 C-15,-55 35,-45 55,-5 C25,35 -30,45 -45,-15 Z" fill="#F7DCE0" opacity="0.45" />
+      <circle cx="-25" cy="-28" r="14" fill="#FFFFFF" opacity="0.4" />
+    </g>
+    <!-- Jar 2: Champagne 24K Gold -->
+    <g transform="translate(390, 95)">
+      <circle cx="0" cy="0" r="110" fill="#FDF8F6" stroke="url(#gold-h2)" stroke-width="5" />
+      <circle cx="0" cy="0" r="90" fill="url(#gold-h2)" />
+      <path d="M-55,10 C-20,-48 42,-42 62,15 C30,52 -35,55 -55,10 Z" fill="#FFF4D1" opacity="0.48" />
+    </g>
+    <!-- Jar 3: Deep Teal Emerald -->
+    <g transform="translate(260, 360)">
+      <circle cx="0" cy="0" r="102" fill="#FDF8F6" stroke="url(#gold-h2)" stroke-width="5" />
+      <circle cx="0" cy="0" r="84" fill="#1F6F6D" />
+      <path d="M-42,-20 C0,-58 50,-22 46,24 C22,55 -48,40 -42,-20 Z" fill="#73C5BD" opacity="0.42" />
+    </g>
+    <!-- Jar 4: Pearl Ivory -->
+    <g transform="translate(500, 345)">
+      <circle cx="0" cy="0" r="88" fill="#FDF8F6" stroke="url(#gold-h2)" stroke-width="4" />
+      <circle cx="0" cy="0" r="70" fill="#F5ECE8" />
+      <ellipse cx="-16" cy="-16" rx="28" ry="18" fill="#FFFFFF" opacity="0.85" />
+    </g>
+    <!-- Jar 5: Royal Plum -->
+    <g transform="translate(95, 495)">
+      <circle cx="0" cy="0" r="78" fill="#FDF8F6" stroke="url(#gold-h2)" stroke-width="4" />
+      <circle cx="0" cy="0" r="62" fill="#6D2F47" />
+      <ellipse cx="-12" cy="-18" rx="22" ry="14" fill="#E39BB0" opacity="0.45" />
+    </g>
+    <!-- Alcohol ink swirls -->
+    <path d="M40,260 C160,180 280,290 420,210 C510,160 580,225 630,275" fill="none" stroke="url(#gold-h2)" stroke-width="3.5" opacity="0.85" />
+    <path d="M180,530 C320,465 440,565 600,475" fill="none" stroke="#E7BCC3" stroke-width="4" opacity="0.7" />
+  </g>
+</svg>

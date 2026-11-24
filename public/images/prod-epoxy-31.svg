@@ -1,0 +1,65 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 900">
+  
+  <defs>
+    <linearGradient id="bg-p2" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#F9F3F0" />
+      <stop offset="55%" stop-color="#EFE1DC" />
+      <stop offset="100%" stop-color="#F9F3F0" />
+    </linearGradient>
+    <linearGradient id="gold-p2" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#F5E4B3" />
+      <stop offset="45%" stop-color="#C59B27" />
+      <stop offset="100%" stop-color="#8C6A14" />
+    </linearGradient>
+    <linearGradient id="rose-p2" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#E7BCC3" />
+      <stop offset="50%" stop-color="#B76E79" />
+      <stop offset="100%" stop-color="#7B3E48" />
+    </linearGradient>
+    <linearGradient id="glass-p2" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FFFFFF" stop-opacity="0.72" />
+      <stop offset="40%" stop-color="#FFFFFF" stop-opacity="0.16" />
+      <stop offset="100%" stop-color="#FDF8F6" stop-opacity="0.45" />
+    </linearGradient>
+    <radialGradient id="glow-p2" cx="35%" cy="28%" r="65%">
+      <stop offset="0%" stop-color="#FFFFFF" stop-opacity="0.75" />
+      <stop offset="60%" stop-color="#FFFFFF" stop-opacity="0.08" />
+      <stop offset="100%" stop-color="#23191E" stop-opacity="0.12" />
+    </radialGradient>
+    <filter id="soft-shadow-p2" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="18" stdDeviation="20" flood-color="#23191E" flood-opacity="0.16" />
+    </filter>
+    <filter id="marble-tex-p2">
+      <feTurbulence type="fractalNoise" baseFrequency="0.012" numOctaves="4" seed="17" result="noise" />
+      <feColorMatrix type="matrix" values="1 0 0 0 0  0 0.94 0 0 0  0 0 0.92 0 0  0 0 0 0.08 0" />
+    </filter>
+  </defs>
+
+  <rect width="900" height="900" fill="url(#bg-p2)" />
+  <rect width="900" height="900" filter="url(#marble-tex-p2)" />
+  <!-- Soft studio window light arch -->
+  <path d="M120,900 L120,250 A330,330 0 0,1 780,250 L780,900 Z" fill="#FFFFFF" opacity="0.34" />
+  <!-- Travertine pedestal base -->
+  <ellipse cx="450" cy="742" rx="285" ry="44" fill="#23191E" opacity="0.08" />
+  <rect x="145" y="705" width="610" height="58" rx="14" fill="#EAE0DB" stroke="#E6D7D0" stroke-width="2" />
+  
+  <g filter="url(#soft-shadow-p2)">
+    <!-- Deep Pour 3:1 Crystal Casting Cube -->
+    <g transform="translate(490, 445)">
+      <rect x="0" y="0" width="215" height="260" rx="22" fill="url(#glass-p2)" stroke="#FFFFFF" stroke-width="3" />
+      <circle cx="105" cy="130" r="62" fill="#B76E79" opacity="0.24" />
+      <path d="M40,185 C85,120 135,145 180,82" fill="none" stroke="url(#gold-p2)" stroke-width="4" />
+      <polygon points="15,15 115,15 15,145" fill="#FFFFFF" opacity="0.45" />
+    </g>
+    <!-- Sleek Casting Resin Bottle -->
+    <rect x="200" y="185" width="215" height="520" rx="38" fill="#23191E" />
+    <rect x="262" y="112" width="90" height="74" rx="14" fill="url(#gold-p2)" />
+    <rect x="230" y="315" width="155" height="255" rx="10" fill="#FDF8F6" />
+    <text x="308" y="390" text-anchor="middle" font-family="Georgia,serif" font-size="22" fill="#23191E" letter-spacing="3">FATIMA</text>
+    <text x="308" y="428" text-anchor="middle" font-family="sans-serif" font-size="14" fill="#B76E79" letter-spacing="2">DEEP POUR 3:1</text>
+    <line x1="268" y1="455" x2="348" y2="455" stroke="#C59B27" stroke-width="1.5" />
+    <text x="308" y="495" text-anchor="middle" font-family="sans-serif" font-size="13" fill="#5C4B52">ZERO BUBBLE</text>
+    <text x="308" y="518" text-anchor="middle" font-family="sans-serif" font-size="13" fill="#5C4B52">VARMALA GRADE</text>
+  </g>
+
+</svg>
