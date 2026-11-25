@@ -9,7 +9,11 @@ import {
   X,
 } from 'lucide-react';
 import type { FilterTab } from '../types/store';
-import { WHATSAPP_NUMBER } from '../utils/storeLogic';
+import {
+  STORE_ADDRESS,
+  STORE_PHONE_DISPLAY,
+  WHATSAPP_NUMBER,
+} from '../utils/storeLogic';
 import { BrandLogo } from './BrandLogo';
 
 interface FooterProps {
@@ -22,15 +26,15 @@ interface FooterProps {
 const POLICIES: Record<string, { title: string; body: string }> = {
   shipping: {
     title: 'Pan-India Shipping & Express Delivery',
-    body: 'Prepaid orders above ₹999 qualify for complimentary Pan-India shipping via BlueDart and Delhivery Air. Resin supplies dispatch within 24 working hours from our Mumbai studio in induction-sealed, double bubble-wrapped cartons. Custom preserved pieces ship in 8–21 days after WhatsApp design approval.',
+    body: `Prepaid orders above ₹999 qualify for complimentary Pan-India shipping via BlueDart and Delhivery Air. Resin supplies dispatch within 24 working hours from our ${STORE_ADDRESS} studio in induction-sealed, double bubble-wrapped cartons. Custom preserved pieces ship in 8–21 days after WhatsApp design approval.`,
   },
   returns: {
     title: 'Damage Replacement & Returns Policy',
-    body: 'Every bottle is hand-inspected before dispatch. In the rare event of transit leakage or breakage, share an unboxing photo on WhatsApp within 48 hours of delivery for a free express replacement. Custom varmala preservation and personalized nameplates are made-to-order and non-returnable once poured.',
+    body: `Every bottle is hand-inspected before dispatch. In the rare event of transit leakage or breakage, share an unboxing photo on WhatsApp (${STORE_PHONE_DISPLAY}) within 48 hours of delivery for a free express replacement. Custom varmala preservation and personalized nameplates are made-to-order and non-returnable once poured.`,
   },
   varmala: {
     title: 'Wedding Varmala Courier Guide',
-    body: 'After booking your varmala slot, store your fresh garlands in a breathable cardboard box (never airtight plastic) in a cool room and dispatch within 2–4 days of your wedding via overnight courier to our Bandra West, Mumbai atelier.',
+    body: `After booking your varmala slot, store your fresh garlands in a breathable cardboard box (never airtight plastic) in a cool room and dispatch within 2–4 days of your wedding via overnight courier to our Fatima Resin Art studio at ${STORE_ADDRESS}.`,
   },
 };
 
@@ -82,11 +86,17 @@ export function Footer({
               <div className="space-y-2 text-xs text-[#FDF8F6]/75 pt-1">
                 <p className="flex items-center gap-2">
                   <MapPin className="w-3.5 h-3.5 text-[#C59B27] shrink-0" />
-                  Atelier 14, Pali Hill Road, Bandra West, Mumbai 400050
+                  {STORE_ADDRESS}
                 </p>
                 <p className="flex items-center gap-2">
                   <Phone className="w-3.5 h-3.5 text-[#C59B27] shrink-0" />
-                  +91 98204 56789 (Mon–Sat, 10 AM – 7 PM IST)
+                  <a
+                    href={`tel:${WHATSAPP_NUMBER}`}
+                    className="hover:text-[#E8D5A3] transition-colors"
+                  >
+                    {STORE_PHONE_DISPLAY}
+                  </a>{' '}
+                  (Mon–Sat, 10 AM – 7 PM IST)
                 </p>
                 <p className="flex items-center gap-2">
                   <Mail className="w-3.5 h-3.5 text-[#C59B27] shrink-0" />
@@ -207,10 +217,10 @@ export function Footer({
                   <button
                     type="button"
                     onClick={onOpenStoreManager}
-                    className="inline-flex items-center gap-1.5 text-xs text-[#FDF8F6]/55 hover:text-[#E8D5A3] transition-colors pt-1 cursor-pointer"
+                    className="inline-flex items-center gap-1.5 text-xs text-[#FDF8F6]/65 hover:text-[#E8D5A3] transition-colors pt-1 cursor-pointer"
                   >
                     <SlidersHorizontal className="w-3.5 h-3.5" />
-                    Store Manager
+                    Admin Panel
                   </button>
                 </li>
               </ul>
@@ -263,7 +273,7 @@ export function Footer({
           {/* Payment Badges & Copyright Row */}
           <div className="mt-12 pt-8 border-t border-white/12 flex flex-col md:flex-row items-center justify-between gap-5">
             <p className="text-xs text-[#FDF8F6]/60 text-center md:text-left">
-              © {new Date().getFullYear()} Fatima Resin Art Studio, Mumbai. All rights reserved.
+              © {new Date().getFullYear()} Fatima Resin Art Studio, {STORE_ADDRESS}. All rights reserved.
             </p>
             <div className="flex flex-wrap items-center justify-center gap-2" aria-label="Accepted Indian payment methods">
               {PAYMENT_BADGES.map((method) => (

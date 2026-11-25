@@ -5,7 +5,7 @@ interface BrandLogoProps {
 
 export function BrandLogo({ inverted = false, compact = false }: BrandLogoProps) {
   return (
-    <span className="inline-flex items-center gap-2.5 whitespace-nowrap shrink-0 select-none">
+    <span className={`inline-flex items-center ${compact ? 'gap-1.5 sm:gap-2.5' : 'gap-2.5'} whitespace-nowrap shrink-0 select-none`}>
       <svg
         viewBox="0 0 44 44"
         className={compact ? 'w-7 h-7 sm:w-9 sm:h-9 shrink-0' : 'w-10 h-10 shrink-0'}
@@ -59,7 +59,7 @@ export function BrandLogo({ inverted = false, compact = false }: BrandLogoProps)
       <span
         className={`font-serif font-semibold ${
           compact
-            ? 'text-[13px] sm:text-lg tracking-[0.07em] sm:tracking-[0.12em]'
+            ? 'text-[12px] sm:text-lg tracking-[0.05em] sm:tracking-[0.12em]'
             : 'text-lg sm:text-xl tracking-[0.12em]'
         } ${inverted ? 'text-[#FDF8F6]' : 'text-[#23191E]'}`}
       >

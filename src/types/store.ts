@@ -101,9 +101,13 @@ export interface OrderTimelineStep {
   active?: boolean;
 }
 
+export type OrderStatus = 'Confirmed' | 'Packed' | 'In Transit' | 'Delivered';
+
 export interface Order {
   id: string;
   createdAt: string;
+  customerId?: string;
+  customerEmail?: string;
   items: CartItem[];
   shipping: OrderShipping;
   paymentMode: PaymentMode;
@@ -113,9 +117,22 @@ export interface Order {
   shippingFee: number;
   codFee: number;
   grandTotal: number;
-  status: 'Confirmed' | 'Packed' | 'In Transit' | 'Delivered';
+  status: OrderStatus;
   estimatedDelivery: string;
   timeline: OrderTimelineStep[];
+}
+
+export interface CustomerAccount {
+  id: string;
+  fullName: string;
+  mobile: string;
+  email: string;
+  password: string;
+  city: string;
+  state: string;
+  pincode: string;
+  address: string;
+  createdAt: string;
 }
 
 export interface CustomQuoteRequest {

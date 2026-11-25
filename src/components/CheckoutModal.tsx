@@ -1,16 +1,25 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import {
   ArrowLeft,
   Banknote,
   CheckCircle2,
   CreditCard,
   Lock,
+  MapPin,
   MessageCircle,
   PackageSearch,
+  Phone,
   QrCode,
+  UserCheck,
   X,
 } from 'lucide-react';
-import type { CartItem, Order, OrderShipping, PaymentMode } from '../types/store';
+import type {
+  CartItem,
+  CustomerAccount,
+  Order,
+  OrderShipping,
+  PaymentMode,
+} from '../types/store';
 import { INDIAN_STATES } from '../data/catalog';
 import {
   buildWhatsAppOrderUrl,
@@ -18,6 +27,8 @@ import {
   COD_HANDLING_FEE,
   formatINR,
   generateOrderId,
+  STORE_ADDRESS,
+  STORE_PHONE_DISPLAY,
   validateShippingForm,
 } from '../utils/storeLogic';
 
@@ -25,6 +36,7 @@ interface CheckoutModalProps {
   open: boolean;
   items: CartItem[];
   couponCode: string;
+  currentUser: CustomerAccount | null;
   onClose: () => void;
   onOrderConfirmed: (order: Order) => void;
   onTrackOrder: (orderId: string) => void;
@@ -35,7 +47,7 @@ const EMPTY_SHIPPING: OrderShipping = {
   mobile: '',
   pincode: '',
   city: '',
-  state: 'Maharashtra',
+  state: 'Gujarat',
   address: '',
 };
 
@@ -43,6 +55,7 @@ export function CheckoutModal({
   open,
   items,
   couponCode,
+  currentUser,
   onClose,
   onOrderConfirmed,
   onTrackOrder,
@@ -53,6 +66,23 @@ export function CheckoutModal({
   const [paymentMode, setPaymentMode] = useState<PaymentMode>('upi');
   const [upiId, setUpiId] = useState('');
   const [confirmedOrder, setConfirmedOrder] = useState<Order | null>(null);
+
+  useEffect(() => {
+    if (!open) return;
+    if (currentUser) {
+      setShipping({
+        fullName: currentUser.fullName,
+        mobile: currentUser.mobile,
+        pincode: currentUser.pincode,
+        city: currentUser.city,
+        state: currentUser.state || 'Gujarat',
+        address: currentUser.address || '',
+      });
+    } else {
+      setShipping(EMPTY_SHIPPING);
+    }
+    setErrors({});
+  }, [open, currentUser]);
 
   if (!open) return null;
 
@@ -87,6 +117,8 @@ export function CheckoutModal({
     const newOrder: Order = {
       id: orderId,
       createdAt: today,
+      customerId: currentUser?.id,
+      customerEmail: currentUser?.email,
       items: items.map((it) => ({ ...it })),
       shipping: { ...shipping },
       paymentMode,
@@ -100,7 +132,7 @@ export function CheckoutModal({
       estimatedDelivery: 'Dispatching within 24 hrs · Est. 3–5 Days Pan-India',
       timeline: [
         { label: 'Order Confirmed', date: `${today} · Just now`, completed: true, active: true },
-        { label: 'Bubble-Wrap Packing at Mumbai Studio', date: 'Within 24 hours', completed: false },
+        { label: 'Bubble-Wrap Packing at Bhavnagar Studio', date: 'Within 24 hours', completed: false },
         { label: 'In Transit via Express Courier', date: 'Pending dispatch', completed: false },
         { label: 'Delivered', date: 'Est. 3–5 Working Days', completed: false },
       ],
@@ -146,6 +178,15 @@ export function CheckoutModal({
         {/* Step 1: Shipping Form */}
         {step === 1 && (
           <form onSubmit={handleContinueToPayment} noValidate className="p-6 space-y-4">
+            {currentUser && (
+              <div className="p-3 rounded-xl bg-[#FDF8F6] border border-[#C59B27]/35 flex items-center gap-2.5 text-xs text-[#23191E]">
+                <UserCheck className="w-4 h-4 text-[#2E6B4F] shrink-0" />
+                <span>
+                  Signed in as <strong>{currentUser.fullName}</strong> — saved contact & city details
+                  auto-filled. This order will be saved to your <strong>My Orders</strong> history.
+                </span>
+              </div>
+            )}
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <div>
                 <label htmlFor="ship-name" className="block text-xs font-semibold text-[#23191E] mb-1.5">
@@ -189,7 +230,7 @@ export function CheckoutModal({
                   maxLength={6}
                   value={shipping.pincode}
                   onChange={(e) => setShipping({ ...shipping, pincode: e.target.value })}
-                  placeholder="400050"
+                  placeholder="364001"
                   className="w-full h-10 px-3.5 rounded-lg border border-[#23191E]/18 bg-[#FDF8F6] focus:bg-white focus:border-[#B76E79] text-sm tabular-nums"
                 />
                 {errors.pincode && <p className="mt-1 text-xs text-[#9B2C3E]">{errors.pincode}</p>}
@@ -204,7 +245,7 @@ export function CheckoutModal({
                   type="text"
                   value={shipping.city}
                   onChange={(e) => setShipping({ ...shipping, city: e.target.value })}
-                  placeholder="Mumbai"
+                  placeholder="Bhavnagar"
                   className="w-full h-10 px-3.5 rounded-lg border border-[#23191E]/18 bg-[#FDF8F6] focus:bg-white focus:border-[#B76E79] text-sm"
                 />
                 {errors.city && <p className="mt-1 text-xs text-[#9B2C3E]">{errors.city}</p>}
@@ -470,6 +511,20 @@ export function CheckoutModal({
               <div className="pt-2 border-t border-[#23191E]/10 flex justify-between font-bold text-[#23191E]">
                 <span>Total ({confirmedOrder.paymentMode.toUpperCase()})</span>
                 <span>{formatINR(confirmedOrder.grandTotal)}</span>
+              </div>
+              <div className="pt-2.5 border-t border-[#23191E]/8 text-[11px] text-[#5C4B52] space-y-1">
+                <p className="flex items-center gap-1.5">
+                  <MapPin className="w-3.5 h-3.5 text-[#C59B27] shrink-0" />
+                  <span>
+                    Dispatch Studio: <strong className="text-[#23191E]">Fatima Resin Art · {STORE_ADDRESS}</strong>
+                  </span>
+                </p>
+                <p className="flex items-center gap-1.5">
+                  <Phone className="w-3.5 h-3.5 text-[#C59B27] shrink-0" />
+                  <span>
+                    Studio Support & WhatsApp: <strong className="text-[#23191E]">{STORE_PHONE_DISPLAY}</strong>
+                  </span>
+                </p>
               </div>
             </div>
 

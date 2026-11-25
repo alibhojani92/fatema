@@ -655,7 +655,7 @@ export const SEED_ORDERS: Order[] = [
     timeline: [
       { label: 'Order Confirmed', date: '21 Nov · 11:20 AM', completed: true },
       { label: 'Leak-Proof Bubble Wrapped & Packed', date: '21 Nov · 04:45 PM', completed: true },
-      { label: 'In Transit — Mumbai Hub to Pune', date: '23 Nov · 09:15 AM', completed: true, active: true },
+      { label: 'In Transit — Bhavnagar Hub to Pune', date: '23 Nov · 09:15 AM', completed: true, active: true },
       { label: 'Out for Delivery', date: 'Expected 26 Nov', completed: false },
     ],
   },

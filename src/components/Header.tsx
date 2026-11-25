@@ -4,17 +4,21 @@ import {
   ChevronLeft,
   ChevronRight,
   Heart,
+  LogOut,
   Menu,
+  Package,
   PackageSearch,
   Search,
   ShoppingBag,
+  User,
   X,
 } from 'lucide-react';
-import type { FilterTab, Product } from '../types/store';
+import type { CustomerAccount, FilterTab, Product } from '../types/store';
 import { ANNOUNCEMENTS } from '../data/catalog';
-import { formatINR, searchProductsPreview } from '../utils/storeLogic';
+import { formatINR, getFirstName, searchProductsPreview } from '../utils/storeLogic';
 import { BrandLogo } from './BrandLogo';
 import { ResilientImage } from './ResilientImage';
+import type { AccountTab } from './MyAccountModal';
 
 interface HeaderProps {
   products: Product[];
@@ -26,6 +30,10 @@ interface HeaderProps {
   onOpenCart: () => void;
   onOpenWishlist: () => void;
   onOpenTrackOrder: () => void;
+  currentUser: CustomerAccount | null;
+  onOpenAuth: (tab?: 'login' | 'register') => void;
+  onOpenAccount: (tab?: AccountTab) => void;
+  onLogout: () => void;
   cartCount: number;
   wishlistCount: number;
 }
@@ -117,6 +125,10 @@ export function Header({
   onOpenCart,
   onOpenWishlist,
   onOpenTrackOrder,
+  currentUser,
+  onOpenAuth,
+  onOpenAccount,
+  onLogout,
   cartCount,
   wishlistCount,
 }: HeaderProps) {
@@ -126,7 +138,9 @@ export function Header({
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [mobileSearchOpen, setMobileSearchOpen] = useState(false);
   const [openDropdown, setOpenDropdown] = useState<string | null>(null);
+  const [accountMenuOpen, setAccountMenuOpen] = useState(false);
   const searchRef = useRef<HTMLDivElement>(null);
+  const accountMenuRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     if (promoPaused) return;
@@ -141,11 +155,15 @@ export function Header({
       if (searchRef.current && !searchRef.current.contains(event.target as Node)) {
         setSearchOpen(false);
       }
+      if (accountMenuRef.current && !accountMenuRef.current.contains(event.target as Node)) {
+        setAccountMenuOpen(false);
+      }
     };
     document.addEventListener('mousedown', handleClickOutside);
     return () => document.removeEventListener('mousedown', handleClickOutside);
   }, []);
 
+  const firstName = currentUser ? getFirstName(currentUser.fullName) : '';
   const previewMatches = searchProductsPreview(products, searchQuery, 6);
 
   const handleNavClick = (item: NavItem) => {
@@ -209,14 +227,14 @@ export function Header({
 
       {/* Main Sticky Header */}
       <header className="sticky top-0 z-40 bg-white/95 backdrop-blur-md border-b border-[#23191E]/10">
-        <div className="max-w-[1320px] mx-auto px-3 sm:px-6 h-15 lg:h-[74px] flex items-center justify-between gap-2 sm:gap-4 lg:gap-8">
+        <div className="max-w-[1320px] mx-auto px-2.5 sm:px-6 h-15 lg:h-[74px] flex items-center justify-between gap-1.5 sm:gap-4 lg:gap-8">
           {/* Left: Mobile Menu + Brand Wordmark */}
-          <div className="flex items-center gap-1.5 sm:gap-2.5 min-w-0 shrink-0">
+          <div className="flex items-center gap-1 sm:gap-2.5 min-w-0 shrink-0">
             <button
               type="button"
               onClick={() => setMobileMenuOpen(true)}
               aria-label="Open navigation menu"
-              className="lg:hidden p-1.5 -ml-1 text-[#23191E] hover:text-[#B76E79] transition-colors shrink-0"
+              className="lg:hidden p-1.5 -ml-0.5 text-[#23191E] hover:text-[#B76E79] transition-colors shrink-0"
             >
               <Menu className="w-5 h-5" />
             </button>
@@ -345,12 +363,12 @@ export function Header({
           </div>
 
           {/* Right: Utility Actions */}
-          <div className="flex items-center gap-1 sm:gap-3 shrink-0">
+          <div className="flex items-center gap-0.5 sm:gap-2.5 shrink-0">
             <button
               type="button"
               onClick={() => setMobileSearchOpen((v) => !v)}
               aria-label="Toggle mobile search"
-              className="md:hidden p-2 rounded-lg text-[#23191E] hover:bg-[#FDF8F6] transition-colors"
+              className="md:hidden p-1.5 rounded-lg text-[#23191E] hover:bg-[#FDF8F6] transition-colors"
             >
               <Search className="w-[18px] h-[18px]" />
             </button>
@@ -359,21 +377,115 @@ export function Header({
               type="button"
               onClick={onOpenTrackOrder}
               aria-label="Track Order"
-              className="hidden md:inline-flex items-center gap-1.5 px-3 py-2 rounded-lg text-sm font-medium text-[#23191E] hover:bg-[#FDF8F6] hover:text-[#B76E79] transition-colors whitespace-nowrap shrink-0 cursor-pointer"
+              className="hidden xl:inline-flex items-center gap-1.5 px-2.5 py-2 rounded-lg text-sm font-medium text-[#23191E] hover:bg-[#FDF8F6] hover:text-[#B76E79] transition-colors whitespace-nowrap shrink-0 cursor-pointer"
             >
               <PackageSearch className="w-[18px] h-[18px]" />
               <span>Track Order</span>
             </button>
 
+            {/* Customer Account Trigger */}
+            {currentUser ? (
+              <div ref={accountMenuRef} className="relative shrink-0">
+                <button
+                  type="button"
+                  onClick={() => setAccountMenuOpen((v) => !v)}
+                  aria-expanded={accountMenuOpen}
+                  aria-haspopup="menu"
+                  aria-label={`Account menu for ${firstName}`}
+                  className="inline-flex items-center gap-1.5 p-1 sm:px-3 sm:py-2 rounded-lg sm:border border-[#B76E79]/35 sm:bg-[#FDF8F6] text-xs sm:text-sm font-semibold text-[#23191E] hover:border-[#B76E79] hover:text-[#B76E79] transition-colors whitespace-nowrap cursor-pointer"
+                >
+                  <span className="w-6 h-6 sm:w-5 sm:h-5 rounded-full bg-[#B76E79] text-white text-[11px] font-bold flex items-center justify-center shrink-0">
+                    {firstName.charAt(0).toUpperCase()}
+                  </span>
+                  <span className="hidden sm:inline max-w-[92px] truncate">{firstName}</span>
+                  <ChevronDown className="w-3.5 h-3.5 hidden sm:inline opacity-70" />
+                </button>
+
+                {accountMenuOpen && (
+                  <div
+                    role="menu"
+                    aria-label="Customer account menu"
+                    className="absolute right-0 top-[calc(100%+8px)] w-56 rounded-xl bg-white border border-[#23191E]/12 shadow-xl p-1.5 z-50"
+                  >
+                    <div className="px-3 py-2 border-b border-[#23191E]/8 mb-1">
+                      <p className="text-xs font-semibold text-[#23191E] truncate">
+                        {currentUser.fullName}
+                      </p>
+                      <p className="text-[11px] text-[#5C4B52] truncate">{currentUser.email}</p>
+                    </div>
+                    <button
+                      type="button"
+                      role="menuitem"
+                      onClick={() => {
+                        setAccountMenuOpen(false);
+                        onOpenAccount('profile');
+                      }}
+                      className="w-full px-3 py-2 rounded-lg text-left text-xs sm:text-sm font-medium text-[#23191E] hover:bg-[#FDF8F6] hover:text-[#B76E79] flex items-center gap-2.5 cursor-pointer"
+                    >
+                      <User className="w-4 h-4 text-[#B76E79]" />
+                      My Account
+                    </button>
+                    <button
+                      type="button"
+                      role="menuitem"
+                      onClick={() => {
+                        setAccountMenuOpen(false);
+                        onOpenAccount('orders');
+                      }}
+                      className="w-full px-3 py-2 rounded-lg text-left text-xs sm:text-sm font-medium text-[#23191E] hover:bg-[#FDF8F6] hover:text-[#B76E79] flex items-center gap-2.5 cursor-pointer"
+                    >
+                      <Package className="w-4 h-4 text-[#C59B27]" />
+                      My Orders
+                    </button>
+                    <button
+                      type="button"
+                      role="menuitem"
+                      onClick={() => {
+                        setAccountMenuOpen(false);
+                        onOpenAccount('wishlist');
+                      }}
+                      className="w-full px-3 py-2 rounded-lg text-left text-xs sm:text-sm font-medium text-[#23191E] hover:bg-[#FDF8F6] hover:text-[#B76E79] flex items-center gap-2.5 cursor-pointer"
+                    >
+                      <Heart className="w-4 h-4 text-[#B76E79]" />
+                      Saved Wishlist
+                    </button>
+                    <div className="my-1 border-t border-[#23191E]/8" />
+                    <button
+                      type="button"
+                      role="menuitem"
+                      onClick={() => {
+                        setAccountMenuOpen(false);
+                        onLogout();
+                      }}
+                      className="w-full px-3 py-2 rounded-lg text-left text-xs sm:text-sm font-medium text-[#9B2C3E] hover:bg-[#FDF8F6] flex items-center gap-2.5 cursor-pointer"
+                    >
+                      <LogOut className="w-4 h-4" />
+                      Logout
+                    </button>
+                  </div>
+                )}
+              </div>
+            ) : (
+              <button
+                type="button"
+                onClick={() => onOpenAuth('login')}
+                aria-label="Login / Sign Up"
+                className="inline-flex items-center gap-1.5 p-1.5 sm:px-3 sm:py-2 rounded-lg sm:border border-[#23191E]/15 text-xs sm:text-sm font-medium text-[#23191E] hover:border-[#B76E79] hover:bg-[#FDF8F6] hover:text-[#B76E79] transition-colors whitespace-nowrap shrink-0 cursor-pointer"
+              >
+                <User className="w-[18px] h-[18px] sm:w-[17px] sm:h-[17px] shrink-0" />
+                <span className="hidden sm:inline">Login / Sign Up</span>
+              </button>
+            )}
+
             <button
               type="button"
               onClick={onOpenWishlist}
               aria-label={`Open wishlist (${wishlistCount} items)`}
-              className="relative p-2 sm:p-2.5 rounded-lg text-[#23191E] hover:bg-[#FDF8F6] hover:text-[#B76E79] transition-colors shrink-0 cursor-pointer"
+              className="relative p-1.5 sm:p-2.5 rounded-lg text-[#23191E] hover:bg-[#FDF8F6] hover:text-[#B76E79] transition-colors shrink-0 cursor-pointer"
             >
               <Heart className="w-[18px] h-[18px] sm:w-5 sm:h-5" />
               {wishlistCount > 0 && (
-                <span className="absolute top-0.5 right-0.5 min-w-[16px] h-[16px] px-1 rounded-full bg-[#B76E79] text-white text-[10px] font-semibold flex items-center justify-center tabular-nums">
+                <span className="absolute top-0 right-0 sm:top-0.5 sm:right-0.5 min-w-[16px] h-[16px] px-1 rounded-full bg-[#B76E79] text-white text-[10px] font-semibold flex items-center justify-center tabular-nums">
                   {wishlistCount}
                 </span>
               )}
@@ -383,7 +495,7 @@ export function Header({
               type="button"
               onClick={onOpenCart}
               aria-label={`Open shopping cart (${cartCount} items)`}
-              className="relative inline-flex items-center gap-1.5 sm:gap-2 px-2.5 sm:px-4 py-1.5 sm:py-2 rounded-lg bg-[#23191E] text-white text-xs sm:text-sm font-medium hover:bg-[#3A2931] transition-colors whitespace-nowrap shrink-0 cursor-pointer"
+              className="relative inline-flex items-center gap-1 sm:gap-2 px-2 sm:px-4 py-1.5 sm:py-2 rounded-lg bg-[#23191E] text-white text-xs sm:text-sm font-medium hover:bg-[#3A2931] transition-colors whitespace-nowrap shrink-0 cursor-pointer"
             >
               <ShoppingBag className="w-4 h-4" />
               <span className="hidden sm:inline">Bag</span>
@@ -559,6 +671,44 @@ export function Header({
               ))}
             </div>
             <div className="p-4 border-t border-[#23191E]/10 bg-[#FDF8F6] space-y-2.5">
+              {currentUser ? (
+                <div className="grid grid-cols-2 gap-2">
+                  <button
+                    type="button"
+                    onClick={() => {
+                      setMobileMenuOpen(false);
+                      onOpenAccount('profile');
+                    }}
+                    className="py-2.5 px-3 rounded-lg bg-[#23191E] text-white text-xs font-semibold flex items-center justify-center gap-1.5"
+                  >
+                    <User className="w-3.5 h-3.5" />
+                    <span className="truncate">{firstName}</span>
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => {
+                      setMobileMenuOpen(false);
+                      onLogout();
+                    }}
+                    className="py-2.5 px-3 rounded-lg border border-[#9B2C3E]/30 bg-white text-xs font-semibold text-[#9B2C3E] flex items-center justify-center gap-1.5"
+                  >
+                    <LogOut className="w-3.5 h-3.5" />
+                    Logout
+                  </button>
+                </div>
+              ) : (
+                <button
+                  type="button"
+                  onClick={() => {
+                    setMobileMenuOpen(false);
+                    onOpenAuth('login');
+                  }}
+                  className="w-full py-2.5 px-4 rounded-lg bg-[#B76E79] text-white text-sm font-semibold flex items-center justify-center gap-2"
+                >
+                  <User className="w-4 h-4" />
+                  Login / Sign Up
+                </button>
+              )}
               <button
                 type="button"
                 onClick={() => {

@@ -1,16 +1,19 @@
-import { useMemo, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import { INITIAL_PRODUCTS, SEED_ORDERS } from './data/catalog';
 import type {
   CartItem,
   CategoryArchItem,
+  CustomerAccount,
   CustomQuoteRequest,
   FilterTab,
   Order,
+  OrderStatus,
   Product,
   ProductVariant,
   SortOption,
 } from './types/store';
-import { filterAndSortProducts } from './utils/storeLogic';
+import { filterAndSortProducts, getCustomerOrders } from './utils/storeLogic';
+import { readStorage, STORAGE_KEYS, writeStorage } from './utils/storage';
 import { Header } from './components/Header';
 import { HeroSlider } from './components/HeroSlider';
 import { CategoryArchStrip } from './components/CategoryArchStrip';
@@ -26,13 +29,75 @@ import { CustomQuoteModal } from './components/CustomQuoteModal';
 import { TrackOrderModal } from './components/TrackOrderModal';
 import { WishlistDrawer } from './components/WishlistDrawer';
 import { StoreManagerModal } from './components/StoreManagerModal';
+import { AuthModal } from './components/AuthModal';
+import { MyAccountModal, type AccountTab } from './components/MyAccountModal';
+
+function updateTimelineForStatus(order: Order, status: OrderStatus): Order['timeline'] {
+  const statusStageMap: Record<OrderStatus, number> = {
+    Confirmed: 0,
+    Packed: 1,
+    'In Transit': 2,
+    Delivered: 3,
+  };
+  const stageIdx = statusStageMap[status] ?? 0;
+  return order.timeline.map((step, idx) => ({
+    ...step,
+    completed: idx <= stageIdx,
+    active: idx === stageIdx,
+  }));
+}
 
 export default function App() {
-  const [products, setProducts] = useState<Product[]>(INITIAL_PRODUCTS);
-  const [cartItems, setCartItems] = useState<CartItem[]>([]);
-  const [wishlistIds, setWishlistIds] = useState<string[]>([]);
-  const [orders, setOrders] = useState<Order[]>(SEED_ORDERS);
-  const [, setQuoteRequests] = useState<CustomQuoteRequest[]>([]);
+  const [products, setProducts] = useState<Product[]>(() =>
+    readStorage<Product[]>(STORAGE_KEYS.PRODUCTS, INITIAL_PRODUCTS)
+  );
+  const [cartItems, setCartItems] = useState<CartItem[]>(() =>
+    readStorage<CartItem[]>(STORAGE_KEYS.CART, [])
+  );
+  const [wishlistIds, setWishlistIds] = useState<string[]>(() =>
+    readStorage<string[]>(STORAGE_KEYS.WISHLIST, [])
+  );
+  const [orders, setOrders] = useState<Order[]>(() =>
+    readStorage<Order[]>(STORAGE_KEYS.ORDERS, SEED_ORDERS)
+  );
+  const [quoteRequests, setQuoteRequests] = useState<CustomQuoteRequest[]>(() =>
+    readStorage<CustomQuoteRequest[]>(STORAGE_KEYS.QUOTES, [])
+  );
+  const [accounts, setAccounts] = useState<CustomerAccount[]>(() =>
+    readStorage<CustomerAccount[]>(STORAGE_KEYS.ACCOUNTS, [])
+  );
+  const [currentUserId, setCurrentUserId] = useState<string | null>(() =>
+    readStorage<string | null>(STORAGE_KEYS.SESSION_USER_ID, null)
+  );
+
+  // Persist storefront & customer data to localStorage
+  useEffect(() => {
+    writeStorage(STORAGE_KEYS.PRODUCTS, products);
+  }, [products]);
+
+  useEffect(() => {
+    writeStorage(STORAGE_KEYS.CART, cartItems);
+  }, [cartItems]);
+
+  useEffect(() => {
+    writeStorage(STORAGE_KEYS.WISHLIST, wishlistIds);
+  }, [wishlistIds]);
+
+  useEffect(() => {
+    writeStorage(STORAGE_KEYS.ORDERS, orders);
+  }, [orders]);
+
+  useEffect(() => {
+    writeStorage(STORAGE_KEYS.QUOTES, quoteRequests);
+  }, [quoteRequests]);
+
+  useEffect(() => {
+    writeStorage(STORAGE_KEYS.ACCOUNTS, accounts);
+  }, [accounts]);
+
+  useEffect(() => {
+    writeStorage(STORAGE_KEYS.SESSION_USER_ID, currentUserId);
+  }, [currentUserId]);
 
   // Catalog filter & sort state
   const [activeTab, setActiveTab] = useState<FilterTab>('All');
@@ -58,6 +123,24 @@ export default function App() {
     initialOrderId?: string;
   }>({ open: false });
   const [storeManagerOpen, setStoreManagerOpen] = useState(false);
+  const [authModalState, setAuthModalState] = useState<{
+    open: boolean;
+    initialTab: 'login' | 'register';
+  }>({ open: false, initialTab: 'login' });
+  const [accountModalState, setAccountModalState] = useState<{
+    open: boolean;
+    initialTab: AccountTab;
+  }>({ open: false, initialTab: 'profile' });
+
+  const currentUser = useMemo(
+    () => accounts.find((acc) => acc.id === currentUserId) ?? null,
+    [accounts, currentUserId]
+  );
+
+  const customerOrders = useMemo(
+    () => (currentUser ? getCustomerOrders(orders, currentUser) : []),
+    [orders, currentUser]
+  );
 
   const filteredProducts = useMemo(
     () =>
@@ -185,6 +268,45 @@ export default function App() {
     setOrders((prev) => [order, ...prev]);
     setCartItems([]);
     setAppliedCouponCode('');
+
+    // Save the customer's delivery address to their profile if not yet saved
+    if (currentUser && !currentUser.address.trim() && order.shipping.address.trim()) {
+      setAccounts((prev) =>
+        prev.map((acc) =>
+          acc.id === currentUser.id
+            ? {
+                ...acc,
+                address: order.shipping.address,
+                city: order.shipping.city,
+                pincode: order.shipping.pincode,
+                state: order.shipping.state,
+              }
+            : acc
+        )
+      );
+    }
+  };
+
+  const handleLoginSuccess = (account: CustomerAccount) => {
+    setCurrentUserId(account.id);
+    setAuthModalState((prev) => ({ ...prev, open: false }));
+  };
+
+  const handleRegisterSuccess = (account: CustomerAccount) => {
+    setAccounts((prev) => [account, ...prev]);
+    setCurrentUserId(account.id);
+    setAuthModalState((prev) => ({ ...prev, open: false }));
+  };
+
+  const handleLogout = () => {
+    setCurrentUserId(null);
+    setAccountModalState((prev) => ({ ...prev, open: false }));
+  };
+
+  const handleUpdateProfile = (updated: CustomerAccount) => {
+    setAccounts((prev) =>
+      prev.map((acc) => (acc.id === updated.id ? updated : acc))
+    );
   };
 
   const handleUpdateProductPricing = (
@@ -208,6 +330,22 @@ export default function App() {
     setProducts((prev) => [newProduct, ...prev]);
   };
 
+  const handleDeleteProduct = (productId: string) => {
+    setProducts((prev) => prev.filter((prod) => prod.id !== productId));
+    setWishlistIds((prev) => prev.filter((id) => id !== productId));
+    setCartItems((prev) => prev.filter((item) => item.productId !== productId));
+  };
+
+  const handleUpdateOrderStatus = (orderId: string, status: OrderStatus) => {
+    setOrders((prev) =>
+      prev.map((order) =>
+        order.id === orderId
+          ? { ...order, status, timeline: updateTimelineForStatus(order, status) }
+          : order
+      )
+    );
+  };
+
   return (
     <div className="min-h-screen flex flex-col bg-white text-[#23191E]">
       <Header
@@ -222,6 +360,14 @@ export default function App() {
         onOpenCart={() => setCartOpen(true)}
         onOpenWishlist={() => setWishlistOpen(true)}
         onOpenTrackOrder={() => setTrackOrderState({ open: true })}
+        currentUser={currentUser}
+        onOpenAuth={(tab = 'login') =>
+          setAuthModalState({ open: true, initialTab: tab })
+        }
+        onOpenAccount={(tab = 'profile') =>
+          setAccountModalState({ open: true, initialTab: tab })
+        }
+        onLogout={handleLogout}
         cartCount={totalCartCount}
         wishlistCount={wishlistIds.length}
       />
@@ -317,6 +463,7 @@ export default function App() {
         open={checkoutOpen}
         items={cartItems}
         couponCode={appliedCouponCode}
+        currentUser={currentUser}
         onClose={() => setCheckoutOpen(false)}
         onOrderConfirmed={handleOrderConfirmed}
         onTrackOrder={(orderId) =>
@@ -349,12 +496,44 @@ export default function App() {
         }
       />
 
+      <AuthModal
+        open={authModalState.open}
+        initialTab={authModalState.initialTab}
+        accounts={accounts}
+        onClose={() => setAuthModalState((prev) => ({ ...prev, open: false }))}
+        onLoginSuccess={handleLoginSuccess}
+        onRegisterSuccess={handleRegisterSuccess}
+      />
+
+      <MyAccountModal
+        open={accountModalState.open}
+        initialTab={accountModalState.initialTab}
+        customer={currentUser}
+        customerOrders={customerOrders}
+        wishlistedProducts={wishlistedProducts}
+        onClose={() => setAccountModalState((prev) => ({ ...prev, open: false }))}
+        onUpdateProfile={handleUpdateProfile}
+        onLogout={handleLogout}
+        onTrackOrder={(orderId) =>
+          setTrackOrderState({ open: true, initialOrderId: orderId })
+        }
+        onRemoveWishlist={handleToggleWishlist}
+        onAddToCart={handleAddToCart}
+        onQuickView={(product, variantId) =>
+          setQuickViewState({ product, variantId })
+        }
+      />
+
       <StoreManagerModal
         open={storeManagerOpen}
         products={products}
+        orders={orders}
+        quoteRequests={quoteRequests}
         onClose={() => setStoreManagerOpen(false)}
         onUpdateProductPricing={handleUpdateProductPricing}
         onAddProduct={handleAddProduct}
+        onDeleteProduct={handleDeleteProduct}
+        onUpdateOrderStatus={handleUpdateOrderStatus}
       />
     </div>
   );

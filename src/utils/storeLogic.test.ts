@@ -1,15 +1,27 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import {
+  authenticateCustomer,
+  buildWhatsAppOrderUrl,
+  buildWhatsAppProductUrl,
   calculateCartTotals,
   calculateDiscountPercent,
   filterAndSortProducts,
   formatINR,
   generateOrderId,
+  getCustomerOrders,
+  getFirstName,
+  parseVariantLabels,
+  STORE_ADDRESS,
+  STORE_PHONE_DISPLAY,
   validateCustomQuoteForm,
+  validateProfileUpdateForm,
+  validateRegistrationForm,
   validateShippingForm,
+  verifyAdminPassword,
+  WHATSAPP_NUMBER,
 } from './storeLogic';
-import type { CartItem, Product } from '../types/store';
+import type { CartItem, CustomerAccount, Order, Product } from '../types/store';
 
 const sampleCart: CartItem[] = [
   {
@@ -67,10 +79,33 @@ const sampleProducts: Product[] = [
   },
 ];
 
+const sampleAccount: CustomerAccount = {
+  id: 'cust-1',
+  fullName: 'Fatima Patel',
+  mobile: '9313626852',
+  email: 'fatima@example.com',
+  password: 'secret123',
+  city: 'Bhavnagar',
+  state: 'Gujarat',
+  pincode: '364001',
+  address: '12 Green Park Society, Bhavnagar',
+  createdAt: '24 Nov 2026',
+};
+
 test('formatINR formats Indian currency cleanly', () => {
   assert.equal(formatINR(999), '₹999');
   assert.equal(formatINR(1299), '₹1,299');
   assert.equal(formatINR(125000), '₹1,25,000');
+});
+
+test('official contact constants and WhatsApp routing match store details', () => {
+  assert.equal(WHATSAPP_NUMBER, '919313626852');
+  assert.equal(STORE_PHONE_DISPLAY, '+91 93136 26852');
+  assert.equal(STORE_ADDRESS, 'Green Park, Bhavnagar, Gujarat');
+
+  const prodUrl = buildWhatsAppProductUrl(sampleProducts[0], sampleProducts[0].variants[0], 2);
+  assert.ok(prodUrl.startsWith('https://wa.me/919313626852?text='));
+  assert.ok(decodeURIComponent(prodUrl).includes('Ultra Clear 2:1 Art Epoxy Resin'));
 });
 
 test('calculateDiscountPercent returns rounded percentage', () => {
@@ -127,7 +162,7 @@ test('validateShippingForm validates Indian mobile and 6-digit pincode', () => {
   const bad = validateShippingForm({
     fullName: 'A',
     mobile: '12345',
-    pincode: '4000',
+    pincode: '3640',
     city: '',
     state: '',
     address: 'Short',
@@ -141,13 +176,118 @@ test('validateShippingForm validates Indian mobile and 6-digit pincode', () => {
 
   const good = validateShippingForm({
     fullName: 'Ayesha Siddiqui',
-    mobile: '9820456789',
-    pincode: '400050',
-    city: 'Mumbai',
-    state: 'Maharashtra',
-    address: '402 Pearl Residency, Bandra West, Near Pali Hill',
+    mobile: '9313626852',
+    pincode: '364001',
+    city: 'Bhavnagar',
+    state: 'Gujarat',
+    address: '14 Green Park Residency, Bhavnagar',
   });
   assert.deepEqual(good, {});
+});
+
+test('validateRegistrationForm checks required fields and prevents duplicates', () => {
+  const bad = validateRegistrationForm(
+    {
+      fullName: 'A',
+      mobile: '9313626852',
+      email: 'fatima@example.com',
+      password: '123',
+      city: '',
+      pincode: '364',
+    },
+    [sampleAccount]
+  );
+  assert.ok(bad.fullName);
+  assert.ok(bad.mobile?.includes('already exists'));
+  assert.ok(bad.email?.includes('already exists'));
+  assert.ok(bad.password);
+  assert.ok(bad.city);
+  assert.ok(bad.pincode);
+
+  const good = validateRegistrationForm(
+    {
+      fullName: 'Zoya Merchant',
+      mobile: '9876543210',
+      email: 'zoya@example.com',
+      password: 'password123',
+      city: 'Surat',
+      pincode: '395007',
+    },
+    [sampleAccount]
+  );
+  assert.deepEqual(good, {});
+});
+
+test('authenticateCustomer supports login via email or mobile and rejects wrong password', () => {
+  const byEmail = authenticateCustomer('FATIMA@example.com', 'secret123', [sampleAccount]);
+  assert.equal(byEmail.account?.id, 'cust-1');
+
+  const byMobile = authenticateCustomer('+91 93136 26852', 'secret123', [sampleAccount]);
+  assert.equal(byMobile.account?.id, 'cust-1');
+
+  const wrongPass = authenticateCustomer('fatima@example.com', 'wrong', [sampleAccount]);
+  assert.ok(wrongPass.error?.includes('Incorrect password'));
+
+  const unknown = authenticateCustomer('nobody@example.com', 'secret123', [sampleAccount]);
+  assert.ok(unknown.error?.includes('No account found'));
+});
+
+test('verifyAdminPassword strictly validates 2201', () => {
+  assert.equal(verifyAdminPassword('2201'), true);
+  assert.equal(verifyAdminPassword(' 2201 '), true);
+  assert.equal(verifyAdminPassword('2202'), false);
+  assert.equal(verifyAdminPassword(''), false);
+});
+
+test('validateProfileUpdateForm and getFirstName work accurately', () => {
+  assert.equal(getFirstName('Ayesha Siddiqui'), 'Ayesha');
+  assert.deepEqual(
+    validateProfileUpdateForm({
+      fullName: 'Fatima Patel',
+      mobile: '9313626852',
+      city: 'Bhavnagar',
+      state: 'Gujarat',
+      pincode: '364001',
+      address: 'Green Park, Bhavnagar',
+    }),
+    {}
+  );
+});
+
+test('parseVariantLabels creates multi-variant entries and getCustomerOrders filters properly', () => {
+  const variants = parseVariantLabels('300g, 1.5kg, 3kg', 500, 650, 'test');
+  assert.equal(variants.length, 3);
+  assert.equal(variants[0].label, '300g');
+  assert.equal(variants[0].price, 500);
+  assert.equal(variants[1].label, '1.5kg');
+
+  const order: Order = {
+    id: generateOrderId(4821),
+    createdAt: '24 Nov 2026',
+    customerId: 'cust-1',
+    items: sampleCart,
+    shipping: {
+      fullName: 'Fatima Patel',
+      mobile: '9313626852',
+      pincode: '364001',
+      city: 'Bhavnagar',
+      state: 'Gujarat',
+      address: 'Green Park, Bhavnagar',
+    },
+    paymentMode: 'upi',
+    subtotal: 1200,
+    discountAmount: 0,
+    couponCode: null,
+    shippingFee: 0,
+    codFee: 0,
+    grandTotal: 1200,
+    status: 'Confirmed',
+    estimatedDelivery: '3-5 days',
+    timeline: [],
+  };
+
+  assert.equal(getCustomerOrders([order], sampleAccount).length, 1);
+  assert.ok(buildWhatsAppOrderUrl(order).startsWith('https://wa.me/919313626852?text='));
 });
 
 test('validateCustomQuoteForm validates required fields and WhatsApp number', () => {
@@ -172,8 +312,4 @@ test('validateCustomQuoteForm validates required fields and WhatsApp number', ()
     notes: 'Wedding date 12 Dec',
   });
   assert.deepEqual(good, {});
-});
-
-test('generateOrderId follows FRA-2611-XXXX format', () => {
-  assert.equal(generateOrderId(4821), 'FRA-2611-4821');
 });

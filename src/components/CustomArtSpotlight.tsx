@@ -58,7 +58,7 @@ export function CustomArtSpotlight({
             </div>
             <div className="mt-6 pt-5 border-t border-white/12">
               <p className="text-xs font-medium tracking-[0.14em] text-[#E8D5A3]">
-                Bespoke Commissions · Hand-Poured in Mumbai
+                Bespoke Commissions · Hand-Poured in Bhavnagar, Gujarat
               </p>
               <p className="mt-1 font-serif text-lg sm:text-xl text-white">
                 WhatsApp layout approval included before every final pour.
